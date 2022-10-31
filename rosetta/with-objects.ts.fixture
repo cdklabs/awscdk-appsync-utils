@@ -1,0 +1,50 @@
+// Fixture with packages imported, but nothing else
+import { Stack } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as appsync from '@aws-cdk/aws-appsync-alpha';
+import { CodeFirstSchema, GraphqlType, InterfaceType, ObjectType, ResolvableField } from 'awscdk-appsync-utils';
+
+const args = {
+  after: GraphqlType.string(),
+  first: GraphqlType.int(),
+  before: GraphqlType.string(),
+  last: GraphqlType.int(),
+};
+
+const Node = new InterfaceType('Node', {
+  definition: { id: GraphqlType.string() }
+});
+
+const FilmNode = new ObjectType('FilmNode', {
+  interfaceTypes: [Node],
+  definition: { filmName: GraphqlType.string() }
+});
+
+function generateEdgeAndConnection(base: ObjectType) {
+  const edge = new ObjectType(`${base.name}Edge`, {
+    definition: { node: base.attribute(), cursor: GraphqlType.string() }
+  });
+  const connection = new ObjectType(`${base.name}Connection`, {
+    definition: {
+      edges: edge.attribute({ isList: true }),
+      [pluralize(base.name)]: base.attribute({ isList: true }),
+      totalCount: GraphqlType.int(),
+    }
+  });
+  return { edge: edge, connection: connection };
+}
+
+const demo = new ObjectType('Demo', {
+  definition: {
+    id: GraphqlType.string({ isRequired: true }),
+    version: GraphqlType.string({ isRequired: true }),
+  },
+});
+
+class Fixture extends Stack {
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
+
+    /// here
+  }
+}
