@@ -2,7 +2,7 @@ const { awscdk } = require('projen');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Mitchell Valine',
   authorAddress: 'mitchellvaline@yahoo.com',
-  cdkVersion: '2.47.0',
+  cdkVersion: '2.51.1',
   defaultReleaseBranch: 'main',
   name: 'awscdk-appsync-utils',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-appsync-utils.git',
