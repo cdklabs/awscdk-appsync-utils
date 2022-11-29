@@ -2,6 +2,7 @@
   "dependencies": [
     {
       "name": "@aws-cdk/aws-appsync-alpha",
+      "version": "2.51.1-alpha.0",
       "type": "build"
     },
     {
@@ -116,6 +117,7 @@
     },
     {
       "name": "@aws-cdk/aws-appsync-alpha",
+      "version": "2.51.1-alpha.0",
       "type": "peer"
     },
     {

@@ -34,7 +34,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/aws-appsync-alpha": "2.52.0-alpha.0",
+    "@aws-cdk/aws-appsync-alpha": "2.51.1-alpha.0",
     "@types/jest": "^27",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
@@ -59,7 +59,7 @@
     "typescript": "^4.9.3"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-appsync-alpha": "^2.52.0-alpha.0",
+    "@aws-cdk/aws-appsync-alpha": "2.51.1-alpha.0",
     "aws-cdk-lib": "^2.51.1",
     "constructs": "^10.0.5"
   },
