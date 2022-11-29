@@ -2,6 +2,7 @@
   "dependencies": [
     {
       "name": "@aws-cdk/aws-appsync-alpha",
+      "version": "2.51.1-alpha.0",
       "type": "build"
     },
     {
@@ -105,12 +106,18 @@
       "type": "build"
     },
     {
+      "name": "@types/babel__traverse",
+      "version": "7.18.2",
+      "type": "override"
+    },
+    {
       "name": "@types/prettier",
       "version": "2.6.0",
       "type": "override"
     },
     {
       "name": "@aws-cdk/aws-appsync-alpha",
+      "version": "2.51.1-alpha.0",
       "type": "peer"
     },
     {
