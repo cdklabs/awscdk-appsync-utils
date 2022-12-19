@@ -149,10 +149,10 @@ describe('testing Object Type properties', () => {
   test('Object Type can implement Resolvable Field for pipelineResolvers', () => {
     // WHEN
     const ds = api.addNoneDataSource('none');
-    const test1 = ds.createFunction({
+    const test1 = ds.createFunction('Test1Function', {
       name: 'test1',
     });
-    const test2 = ds.createFunction({
+    const test2 = ds.createFunction('Test2Function', {
       name: 'test2',
     });
     const test = new ObjectType('Test', {
@@ -179,8 +179,8 @@ describe('testing Object Type properties', () => {
       Kind: 'PIPELINE',
       PipelineConfig: {
         Functions: [
-          { 'Fn::GetAtt': ['apinonetest1FunctionEF63046F', 'FunctionId'] },
-          { 'Fn::GetAtt': ['apinonetest2Function615111D0', 'FunctionId'] },
+          { 'Fn::GetAtt': ['apiTest1Function793605E9', 'FunctionId'] },
+          { 'Fn::GetAtt': ['apiTest2FunctionB704A7AD', 'FunctionId'] },
         ],
       },
     });

@@ -1,4 +1,4 @@
-import { ISchema, ISchemaConfig, IGraphqlApi } from '@aws-cdk/aws-appsync-alpha';
+import { SchemaBindOptions, ISchema, ISchemaConfig, IGraphqlApi } from '@aws-cdk/aws-appsync-alpha';
 import { Lazy } from 'aws-cdk-lib';
 import { shapeAddition } from './private';
 import { IIntermediateType } from './schema-base';
@@ -33,7 +33,7 @@ export class CodeFirstSchema implements ISchema {
    *
    * @param api The binding GraphQL Api
    */
-  public bind(api: IGraphqlApi): ISchemaConfig {
+  public bind(api: IGraphqlApi, _options?: SchemaBindOptions): ISchemaConfig {
     return {
       apiId: api.apiId,
       definition: Lazy.string({

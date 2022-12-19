@@ -212,7 +212,7 @@ export class ObjectType extends InterfaceType implements IIntermediateType {
    * Generate the resolvers linked to this Object Type
    */
   protected generateResolver(api: IGraphqlApi, fieldName: string, options?: ResolvableFieldOptions): Resolver {
-    return api.createResolver({
+    return api.createResolver(`${this.name}${fieldName}Resolver`, {
       typeName: this.name,
       fieldName: fieldName,
       dataSource: options?.dataSource,

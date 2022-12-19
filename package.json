@@ -1,5 +1,6 @@
 {
   "name": "awscdk-appsync-utils",
+  "description": "Utilities for creating appsync apis using aws-cdk",
   "repository": {
     "type": "git",
     "url": "https://github.com/cdklabs/awscdk-appsync-utils.git"
@@ -16,7 +17,11 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
+    "package:dotnet": "npx projen package:dotnet",
+    "package:go": "npx projen package:go",
+    "package:java": "npx projen package:java",
     "package:js": "npx projen package:js",
+    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -34,12 +39,12 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/aws-appsync-alpha": "2.51.1-alpha.0",
+    "@aws-cdk/aws-appsync-alpha": "2.55.1-alpha.0",
     "@types/jest": "^27",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "aws-cdk-lib": "2.51.1",
+    "aws-cdk-lib": "2.55.1",
     "constructs": "10.0.5",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.6",
@@ -59,8 +64,8 @@
     "typescript": "^4.9.3"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-appsync-alpha": "2.51.1-alpha.0",
-    "aws-cdk-lib": "^2.51.1",
+    "@aws-cdk/aws-appsync-alpha": "2.55.1-alpha.0",
+    "aws-cdk-lib": "^2.55.1",
     "constructs": "^10.0.5"
   },
   "keywords": [
@@ -113,7 +118,26 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {},
+    "targets": {
+      "java": {
+        "package": "io.github.cdklabs.awscdk.appsync.utils",
+        "maven": {
+          "groupId": "io.github.cdklabs",
+          "artifactId": "awscdk-appsync-utils"
+        }
+      },
+      "python": {
+        "distName": "cdklabs.appsync-utils",
+        "module": "awscdk.appsync_utils"
+      },
+      "dotnet": {
+        "namespace": "Cdklabs.AwsCdkAppsyncUtils",
+        "packageId": "Cdklabs.AwsCdkAppsyncUtils"
+      },
+      "go": {
+        "moduleName": "github.com/cdklabs/awscdk-appsync-utils-go"
+      }
+    },
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
