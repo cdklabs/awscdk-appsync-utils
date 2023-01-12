@@ -1,5 +1,5 @@
-import { SchemaBindOptions, ISchema, ISchemaConfig, IGraphqlApi } from '@aws-cdk/aws-appsync-alpha';
 import { Lazy } from 'aws-cdk-lib';
+import { SchemaBindOptions, ISchema, ISchemaConfig, IGraphqlApi } from 'aws-cdk-lib/aws-appsync';
 import { shapeAddition } from './private';
 import { IIntermediateType } from './schema-base';
 import { Field, ResolvableField } from './schema-field';

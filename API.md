@@ -413,10 +413,10 @@ const resolvableFieldOptions: ResolvableFieldOptions = { ... }
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.returnType">returnType</a></code> | <code><a href="#awscdk-appsync-utils.GraphqlType">GraphqlType</a></code> | The return type for this field. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.args">args</a></code> | <code>{[ key: string ]: <a href="#awscdk-appsync-utils.GraphqlType">GraphqlType</a>}</code> | The arguments for this field. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.directives">directives</a></code> | <code><a href="#awscdk-appsync-utils.Directive">Directive</a>[]</code> | the directives for this field. |
-| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.dataSource">dataSource</a></code> | <code>@aws-cdk/aws-appsync-alpha.BaseDataSource</code> | The data source creating linked to this resolvable field. |
-| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.pipelineConfig">pipelineConfig</a></code> | <code>@aws-cdk/aws-appsync-alpha.IAppsyncFunction[]</code> | configuration of the pipeline resolver. |
-| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.requestMappingTemplate">requestMappingTemplate</a></code> | <code>@aws-cdk/aws-appsync-alpha.MappingTemplate</code> | The request mapping template for this resolver. |
-| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.responseMappingTemplate">responseMappingTemplate</a></code> | <code>@aws-cdk/aws-appsync-alpha.MappingTemplate</code> | The response mapping template for this resolver. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.dataSource">dataSource</a></code> | <code>aws-cdk-lib.aws_appsync.BaseDataSource</code> | The data source creating linked to this resolvable field. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.pipelineConfig">pipelineConfig</a></code> | <code>aws-cdk-lib.aws_appsync.IAppsyncFunction[]</code> | configuration of the pipeline resolver. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.requestMappingTemplate">requestMappingTemplate</a></code> | <code>aws-cdk-lib.aws_appsync.MappingTemplate</code> | The request mapping template for this resolver. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.responseMappingTemplate">responseMappingTemplate</a></code> | <code>aws-cdk-lib.aws_appsync.MappingTemplate</code> | The response mapping template for this resolver. |
 
 ---
 
@@ -468,7 +468,7 @@ the directives for this field.
 public readonly dataSource: BaseDataSource;
 ```
 
-- *Type:* @aws-cdk/aws-appsync-alpha.BaseDataSource
+- *Type:* aws-cdk-lib.aws_appsync.BaseDataSource
 - *Default:* no data source
 
 The data source creating linked to this resolvable field.
@@ -481,7 +481,7 @@ The data source creating linked to this resolvable field.
 public readonly pipelineConfig: IAppsyncFunction[];
 ```
 
-- *Type:* @aws-cdk/aws-appsync-alpha.IAppsyncFunction[]
+- *Type:* aws-cdk-lib.aws_appsync.IAppsyncFunction[]
 - *Default:* no pipeline resolver configuration An empty array or undefined prop will set resolver to be of type unit
 
 configuration of the pipeline resolver.
@@ -494,7 +494,7 @@ configuration of the pipeline resolver.
 public readonly requestMappingTemplate: MappingTemplate;
 ```
 
-- *Type:* @aws-cdk/aws-appsync-alpha.MappingTemplate
+- *Type:* aws-cdk-lib.aws_appsync.MappingTemplate
 - *Default:* No mapping template
 
 The request mapping template for this resolver.
@@ -507,7 +507,7 @@ The request mapping template for this resolver.
 public readonly responseMappingTemplate: MappingTemplate;
 ```
 
-- *Type:* @aws-cdk/aws-appsync-alpha.MappingTemplate
+- *Type:* aws-cdk-lib.aws_appsync.MappingTemplate
 - *Default:* No mapping template
 
 The response mapping template for this resolver.
@@ -550,7 +550,7 @@ the object types for this union type.
 
 ### CodeFirstSchema <a name="CodeFirstSchema" id="awscdk-appsync-utils.CodeFirstSchema"></a>
 
-- *Implements:* @aws-cdk/aws-appsync-alpha.ISchema
+- *Implements:* aws-cdk-lib.aws_appsync.ISchema
 
 #### Initializers <a name="Initializers" id="awscdk-appsync-utils.CodeFirstSchema.Initializer"></a>
 
@@ -715,7 +715,7 @@ Called when the GraphQL Api is initialized to allow this object to bind to the s
 
 ###### `api`<sup>Required</sup> <a name="api" id="awscdk-appsync-utils.CodeFirstSchema.bind.parameter.api"></a>
 
-- *Type:* @aws-cdk/aws-appsync-alpha.IGraphqlApi
+- *Type:* aws-cdk-lib.aws_appsync.IGraphqlApi
 
 The binding GraphQL Api.
 
@@ -723,7 +723,7 @@ The binding GraphQL Api.
 
 ###### `_options`<sup>Optional</sup> <a name="_options" id="awscdk-appsync-utils.CodeFirstSchema.bind.parameter._options"></a>
 
-- *Type:* @aws-cdk/aws-appsync-alpha.SchemaBindOptions
+- *Type:* aws-cdk-lib.aws_appsync.SchemaBindOptions
 
 ---
 
@@ -874,7 +874,7 @@ the mutation fields to link to.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.Directive.property.mode">mode</a></code> | <code>@aws-cdk/aws-appsync-alpha.AuthorizationType</code> | The authorization type of this directive. |
+| <code><a href="#awscdk-appsync-utils.Directive.property.mode">mode</a></code> | <code>aws-cdk-lib.aws_appsync.AuthorizationType</code> | The authorization type of this directive. |
 | <code><a href="#awscdk-appsync-utils.Directive.property.mutationFields">mutationFields</a></code> | <code>string[]</code> | Mutation fields for a subscription directive. |
 
 ---
@@ -885,7 +885,7 @@ the mutation fields to link to.
 public readonly mode: AuthorizationType;
 ```
 
-- *Type:* @aws-cdk/aws-appsync-alpha.AuthorizationType
+- *Type:* aws-cdk-lib.aws_appsync.AuthorizationType
 - *Default:* not an authorization directive
 
 The authorization type of this directive.
@@ -1079,7 +1079,7 @@ Generate the directives for this field.
 
 ###### `modes`<sup>Optional</sup> <a name="modes" id="awscdk-appsync-utils.Field.directivesToString.parameter.modes"></a>
 
-- *Type:* @aws-cdk/aws-appsync-alpha.AuthorizationType[]
+- *Type:* aws-cdk-lib.aws_appsync.AuthorizationType[]
 
 ---
 
@@ -1557,7 +1557,7 @@ Generate the directives for this field.
 
 ###### `_modes`<sup>Optional</sup> <a name="_modes" id="awscdk-appsync-utils.GraphqlType.directivesToString.parameter._modes"></a>
 
-- *Type:* @aws-cdk/aws-appsync-alpha.AuthorizationType[]
+- *Type:* aws-cdk-lib.aws_appsync.AuthorizationType[]
 
 ---
 
@@ -2302,7 +2302,7 @@ Generate the string of this object type.
 | <code><a href="#awscdk-appsync-utils.ObjectType.property.name">name</a></code> | <code>string</code> | the name of this type. |
 | <code><a href="#awscdk-appsync-utils.ObjectType.property.directives">directives</a></code> | <code><a href="#awscdk-appsync-utils.Directive">Directive</a>[]</code> | the directives for this object type. |
 | <code><a href="#awscdk-appsync-utils.ObjectType.property.interfaceTypes">interfaceTypes</a></code> | <code><a href="#awscdk-appsync-utils.InterfaceType">InterfaceType</a>[]</code> | The Interface Types this Object Type implements. |
-| <code><a href="#awscdk-appsync-utils.ObjectType.property.resolvers">resolvers</a></code> | <code>@aws-cdk/aws-appsync-alpha.Resolver[]</code> | The resolvers linked to this data source. |
+| <code><a href="#awscdk-appsync-utils.ObjectType.property.resolvers">resolvers</a></code> | <code>aws-cdk-lib.aws_appsync.Resolver[]</code> | The resolvers linked to this data source. |
 
 ---
 
@@ -2362,7 +2362,7 @@ The Interface Types this Object Type implements.
 public readonly resolvers: Resolver[];
 ```
 
-- *Type:* @aws-cdk/aws-appsync-alpha.Resolver[]
+- *Type:* aws-cdk-lib.aws_appsync.Resolver[]
 
 The resolvers linked to this data source.
 
@@ -2423,7 +2423,7 @@ Generate the directives for this field.
 
 ###### `modes`<sup>Optional</sup> <a name="modes" id="awscdk-appsync-utils.ResolvableField.directivesToString.parameter.modes"></a>
 
-- *Type:* @aws-cdk/aws-appsync-alpha.AuthorizationType[]
+- *Type:* aws-cdk-lib.aws_appsync.AuthorizationType[]
 
 ---
 
@@ -2991,7 +2991,7 @@ Generate the directives for this field.
 
 ###### `modes`<sup>Optional</sup> <a name="modes" id="awscdk-appsync-utils.IField.directivesToString.parameter.modes"></a>
 
-- *Type:* @aws-cdk/aws-appsync-alpha.AuthorizationType[]
+- *Type:* aws-cdk-lib.aws_appsync.AuthorizationType[]
 
 the authorization modes of the graphql api.
 
@@ -3158,7 +3158,7 @@ Generate the string of this object type.
 | <code><a href="#awscdk-appsync-utils.IIntermediateType.property.directives">directives</a></code> | <code><a href="#awscdk-appsync-utils.Directive">Directive</a>[]</code> | the directives for this object type. |
 | <code><a href="#awscdk-appsync-utils.IIntermediateType.property.interfaceTypes">interfaceTypes</a></code> | <code><a href="#awscdk-appsync-utils.InterfaceType">InterfaceType</a>[]</code> | The Interface Types this Intermediate Type implements. |
 | <code><a href="#awscdk-appsync-utils.IIntermediateType.property.intermediateType">intermediateType</a></code> | <code><a href="#awscdk-appsync-utils.IIntermediateType">IIntermediateType</a></code> | the intermediate type linked to this attribute (i.e. an interface or an object). |
-| <code><a href="#awscdk-appsync-utils.IIntermediateType.property.resolvers">resolvers</a></code> | <code>@aws-cdk/aws-appsync-alpha.Resolver[]</code> | The resolvers linked to this data source. |
+| <code><a href="#awscdk-appsync-utils.IIntermediateType.property.resolvers">resolvers</a></code> | <code>aws-cdk-lib.aws_appsync.Resolver[]</code> | The resolvers linked to this data source. |
 
 ---
 
@@ -3231,7 +3231,7 @@ the intermediate type linked to this attribute (i.e. an interface or an object).
 public readonly resolvers: Resolver[];
 ```
 
-- *Type:* @aws-cdk/aws-appsync-alpha.Resolver[]
+- *Type:* aws-cdk-lib.aws_appsync.Resolver[]
 
 The resolvers linked to this data source.
 

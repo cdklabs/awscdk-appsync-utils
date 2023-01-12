@@ -1,4 +1,4 @@
-import { IAppsyncFunction, BaseDataSource, AuthorizationType, MappingTemplate } from '@aws-cdk/aws-appsync-alpha';
+import { IAppsyncFunction, BaseDataSource, AuthorizationType, MappingTemplate } from 'aws-cdk-lib/aws-appsync';
 import { Type, IField, IIntermediateType, Directive } from './schema-base';
 
 /**

@@ -1,6 +1,6 @@
-import * as appsync from '@aws-cdk/aws-appsync-alpha';
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
+import * as appsync from 'aws-cdk-lib/aws-appsync';
 import { CodeFirstSchema, Field, InterfaceType, ObjectType, ResolvableField, UnionType } from '../src';
 import * as t from './scalar-type-defintions';
 
