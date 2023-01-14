@@ -1,4 +1,4 @@
-import { AuthorizationType } from '@aws-cdk/aws-appsync-alpha';
+import { AuthorizationType } from 'aws-cdk-lib/aws-appsync';
 import { Directive } from './schema-base';
 import { InterfaceType } from './schema-intermediate';
 

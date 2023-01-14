@@ -1,5 +1,5 @@
-import * as appsync from '@aws-cdk/aws-appsync-alpha';
 import * as cdk from 'aws-cdk-lib';
+import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as db from 'aws-cdk-lib/aws-dynamodb';
 import { CodeFirstSchema, Directive, EnumType, Field, InputType, InterfaceType, ObjectType, ResolvableField, UnionType } from '../src';
 import * as ObjectTypeDefs from './object-type-definitions';

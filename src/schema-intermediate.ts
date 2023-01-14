@@ -1,4 +1,4 @@
-import { Resolver, IGraphqlApi, AuthorizationType, GraphqlApi } from '@aws-cdk/aws-appsync-alpha';
+import { Resolver, IGraphqlApi, AuthorizationType, GraphqlApi } from 'aws-cdk-lib/aws-appsync';
 import { shapeAddition } from './private';
 import { Directive, IField, IIntermediateType, AddFieldOptions } from './schema-base';
 import { BaseTypeOptions, GraphqlType, ResolvableFieldOptions, ResolvableField } from './schema-field';
