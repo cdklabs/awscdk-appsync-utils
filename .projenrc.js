@@ -8,9 +8,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: 'awscdk-appsync-utils',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-appsync-utils.git',
   description: 'Utilities for creating appsync apis using aws-cdk',
+  // Auto approve PRs by our bot
+  autoApproveOptions: {
+    allowedUsernames: ['cdklabs-automation'],
+    secret: 'GITHUB_TOKEN',
+  },
 
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   publishToMaven: {
     javaPackage: 'io.github.cdklabs.awscdk.appsync.utils',
     mavenGroupId: 'io.github.cdklabs',
