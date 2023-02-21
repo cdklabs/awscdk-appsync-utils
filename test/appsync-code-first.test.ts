@@ -1,8 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import { GraphqlApi } from 'aws-cdk-lib/aws-appsync';
-import { CodeFirstSchema, Directive, Field, InterfaceType, ObjectType, ResolvableField } from '../src';
 import * as t from './scalar-type-defintions';
+import { CodeFirstSchema, Directive, Field, InterfaceType, ObjectType, ResolvableField } from '../src';
 
 let stack: cdk.Stack;
 beforeEach(() => {

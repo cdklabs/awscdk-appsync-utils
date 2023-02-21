@@ -1,9 +1,9 @@
 import * as cdk from 'aws-cdk-lib';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as db from 'aws-cdk-lib/aws-dynamodb';
-import { CodeFirstSchema, Directive, EnumType, Field, InputType, InterfaceType, ObjectType, ResolvableField, UnionType } from '../src';
 import * as ObjectTypeDefs from './object-type-definitions';
 import * as ScalarType from './scalar-type-defintions';
+import { CodeFirstSchema, Directive, EnumType, Field, InputType, InterfaceType, ObjectType, ResolvableField, UnionType } from '../src';
 
 /*
  * Creates an Appsync GraphQL API and schema in a code-first approach.

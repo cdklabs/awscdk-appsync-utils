@@ -1,8 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
-import { CodeFirstSchema, InputType, ObjectType } from '../src';
 import * as t from './scalar-type-defintions';
+import { CodeFirstSchema, InputType, ObjectType } from '../src';
 
 const out = 'input Test {\n  test: String\n}\n';
 let stack: cdk.Stack;

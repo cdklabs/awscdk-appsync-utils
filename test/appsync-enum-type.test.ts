@@ -1,8 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
-import { CodeFirstSchema, EnumType, ObjectType } from '../src';
 import * as t from './scalar-type-defintions';
+import { CodeFirstSchema, EnumType, ObjectType } from '../src';
 
 const out = 'enum Test {\n  test1\n  test2\n  test3\n}\n';
 let stack: cdk.Stack;

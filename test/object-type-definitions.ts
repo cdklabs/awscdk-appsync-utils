@@ -1,5 +1,5 @@
-import { ObjectType } from '../src';
 import * as ScalarType from './scalar-type-defintions';
+import { ObjectType } from '../src';
 
 export const planet = new ObjectType('Planet', {
   definition: {

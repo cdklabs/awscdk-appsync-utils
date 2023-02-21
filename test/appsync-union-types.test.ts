@@ -1,8 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
-import { CodeFirstSchema, Field, InterfaceType, ObjectType, ResolvableField, UnionType } from '../src';
 import * as t from './scalar-type-defintions';
+import { CodeFirstSchema, Field, InterfaceType, ObjectType, ResolvableField, UnionType } from '../src';
 
 const out = 'type Test1 {\n  test1: String\n}\ntype Test2 {\n  test2: String\n}\nunion UnionTest = Test1 | Test2\n';
 const test1 = new ObjectType('Test1', {
