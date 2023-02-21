@@ -2,8 +2,8 @@ import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as cognito from 'aws-cdk-lib/aws-cognito';
-import { CodeFirstSchema, Directive, Field, InterfaceType, ObjectType, ResolvableField } from '../src';
 import * as t from './scalar-type-defintions';
+import { CodeFirstSchema, Directive, Field, InterfaceType, ObjectType, ResolvableField } from '../src';
 
 const generateField = (directives: Directive[]): Field => {
   return new Field({

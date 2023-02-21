@@ -1,8 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
-import { CodeFirstSchema, ObjectType } from '../src';
 import * as t from './scalar-type-defintions';
+import { CodeFirstSchema, ObjectType } from '../src';
 
 let stack: cdk.Stack;
 let schema: CodeFirstSchema;
