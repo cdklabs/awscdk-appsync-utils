@@ -13,6 +13,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     allowedUsernames: ['cdklabs-automation'],
     secret: 'GITHUB_TOKEN',
   },
+  autoApproveUpgrades: true,
 
   publishToMaven: {
     javaPackage: 'io.github.cdklabs.awscdk.appsync.utils',
