@@ -219,6 +219,8 @@ export class ObjectType extends InterfaceType implements IIntermediateType {
       pipelineConfig: options?.pipelineConfig,
       requestMappingTemplate: options?.requestMappingTemplate,
       responseMappingTemplate: options?.responseMappingTemplate,
+      code: options?.code,
+      runtime: options?.runtime,
     });
   }
 }

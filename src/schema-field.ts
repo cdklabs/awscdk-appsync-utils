@@ -1,4 +1,4 @@
-import { IAppsyncFunction, BaseDataSource, AuthorizationType, MappingTemplate } from 'aws-cdk-lib/aws-appsync';
+import { IAppsyncFunction, BaseDataSource, AuthorizationType, MappingTemplate, Code, FunctionRuntime } from 'aws-cdk-lib/aws-appsync';
 import { Type, IField, IIntermediateType, Directive } from './schema-base';
 
 /**
@@ -432,6 +432,18 @@ export interface ResolvableFieldOptions extends FieldOptions {
    * @default - No mapping template
    */
   readonly responseMappingTemplate?: MappingTemplate;
+  /**
+   * The function code
+   *
+   * @default - No code is used
+   */
+  readonly code?: Code;
+  /**
+   * The functions runtime
+   * 
+   * @default - no function runtime, VTL mapping templates used
+   */
+  readonly runtime?: FunctionRuntime;
 }
 
 /**

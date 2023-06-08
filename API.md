@@ -143,8 +143,8 @@ GraphQL Types are the building blocks of types, whether they are scalar, objects
 interfaces, etc. GraphQL Types can be:
 
 - [**Scalar Types**](https://docs.aws.amazon.com/appsync/latest/devguide/scalars.html): Id, Int, String, AWSDate, etc.
-- [**Object Types**](#Object-Types): types that you generate (i.e. `demo` from the example above)
-- [**Interface Types**](#Interface-Types): abstract types that define the base implementation of other
+- [**Object Types**](#object-types): types that you generate (i.e. `demo` from the example above)
+- [**Interface Types**](#interface-types): abstract types that define the base implementation of other
 Intermediate Types
 
 More concretely, GraphQL Types are simply the types appended to variables.
@@ -173,7 +173,7 @@ on top of `GraphqlType` that provide finer grain support.
 
 ### Field
 
-`Field` extends `GraphqlType` and will allow you to define arguments. [**Interface Types**](#Interface-Types) are not resolvable and this class will allow you to define arguments,
+`Field` extends `GraphqlType` and will allow you to define arguments. [**Interface Types**](#interface-types) are not resolvable and this class will allow you to define arguments,
 but not its resolvers.
 
 For example, if we want to create the following type:
@@ -203,7 +203,7 @@ const type = new InterfaceType('Node', {
 ### Resolvable Fields
 
 `ResolvableField` extends `Field` and will allow you to define arguments and its resolvers.
-[**Object Types**](#Object-Types) can have fields that resolve and perform operations on
+[**Object Types**](#object-types) can have fields that resolve and perform operations on
 your backend.
 
 You can also create resolvable fields for object types.
@@ -278,11 +278,11 @@ Types will be the meat of your GraphQL Schema as they are the types defined by y
 
 Intermediate Types include:
 
-- [**Interface Types**](#Interface-Types)
-- [**Object Types**](#Object-Types)
-- [**Enum Types**](#Enum-Types)
-- [**Input Types**](#Input-Types)
-- [**Union Types**](#Union-Types)
+- [**Interface Types**](#interface-types)
+- [**Object Types**](#object-types)
+- [**Enum Types**](#enum-types)
+- [**Input Types**](#input-types)
+- [**Union Types**](#union-types)
 
 #### Interface Types
 
@@ -538,6 +538,7 @@ api.addSubscription('addedFilm', new Field({
 ```
 
 To learn more about top level operations, check out the docs [here](https://docs.aws.amazon.com/appsync/latest/devguide/real-time-data.html).
+
 ## Contributing
 
 This library leans towards high level and experimental features for appsync cdk users. If you have an idea for additional utilities please create an issue describing the feature.
@@ -549,7 +550,6 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 This project is licensed under the Apache-2.0 License.
 
 # API Reference <a name="API Reference" id="api-reference"></a>
-
 
 ## Structs <a name="Structs" id="Structs"></a>
 
@@ -745,6 +745,7 @@ public readonly args: {[ key: string ]: GraphqlType};
 The arguments for this field.
 
 i.e. type Example (first: String second: String) {}
+
 - where 'first' and 'second' are key values for args
 and 'String' is the GraphqlType
 
@@ -963,6 +964,7 @@ const resolvableFieldOptions: ResolvableFieldOptions = { ... }
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.returnType">returnType</a></code> | <code><a href="#awscdk-appsync-utils.GraphqlType">GraphqlType</a></code> | The return type for this field. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.args">args</a></code> | <code>{[ key: string ]: <a href="#awscdk-appsync-utils.GraphqlType">GraphqlType</a>}</code> | The arguments for this field. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.directives">directives</a></code> | <code><a href="#awscdk-appsync-utils.Directive">Directive</a>[]</code> | the directives for this field. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.code">code</a></code> | <code>aws-cdk-lib.aws_appsync.Code</code> | The function code. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.dataSource">dataSource</a></code> | <code>aws-cdk-lib.aws_appsync.BaseDataSource</code> | The data source creating linked to this resolvable field. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.pipelineConfig">pipelineConfig</a></code> | <code>aws-cdk-lib.aws_appsync.IAppsyncFunction[]</code> | configuration of the pipeline resolver. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.requestMappingTemplate">requestMappingTemplate</a></code> | <code>aws-cdk-lib.aws_appsync.MappingTemplate</code> | The request mapping template for this resolver. |
@@ -994,8 +996,22 @@ public readonly args: {[ key: string ]: GraphqlType};
 The arguments for this field.
 
 i.e. type Example (first: String second: String) {}
+
 - where 'first' and 'second' are key values for args
 and 'String' is the GraphqlType
+
+---
+
+##### `code`<sup>Optional</sup> <a name="code" id="awscdk-appsync-utils.ResolvableFieldOptions.property.code"></a>
+
+```typescript
+public readonly code: Code;
+```
+
+- *Type:* aws-cdk-lib.aws_appsync.Code
+- *Default:* No code is used
+
+The function code.
 
 ---
 
@@ -1061,6 +1077,19 @@ public readonly responseMappingTemplate: MappingTemplate;
 - *Default:* No mapping template
 
 The response mapping template for this resolver.
+
+---
+
+##### `runtime`<sup>Optional</sup> <a name="runtime" id="awscdk-appsync-utils.ResolvableFieldOptions.property.runtime"></a>
+
+```typescript
+public readonly runtime: FunctionRuntime;
+```
+
+- *Type:* aws-cdk-lib.aws_appsync.FunctionRuntime
+- *Default:* no function runtime, VTL mapping templates used
+
+The functions runtime.
 
 ---
 
@@ -1277,7 +1306,6 @@ The binding GraphQL Api.
 
 ---
 
-
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -1297,7 +1325,6 @@ public readonly definition: string;
 The definition for this schema.
 
 ---
-
 
 ### Directive <a name="Directive" id="awscdk-appsync-utils.Directive"></a>
 
@@ -1455,7 +1482,6 @@ Mutation fields for a subscription directive.
 
 ---
 
-
 ### EnumType <a name="EnumType" id="awscdk-appsync-utils.EnumType"></a>
 
 - *Implements:* <a href="#awscdk-appsync-utils.IIntermediateType">IIntermediateType</a>
@@ -1540,7 +1566,6 @@ public toString(): string
 
 Generate the string of this enum type.
 
-
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -1573,7 +1598,6 @@ public readonly name: string;
 the name of this type.
 
 ---
-
 
 ### Field <a name="Field" id="awscdk-appsync-utils.Field"></a>
 
@@ -2036,7 +2060,6 @@ public readonly fieldOptions: ResolvableFieldOptions;
 The options for this field.
 
 ---
-
 
 ### GraphqlType <a name="GraphqlType" id="awscdk-appsync-utils.GraphqlType"></a>
 
@@ -2501,7 +2524,6 @@ the intermediate type linked to this attribute (i.e. an interface or an object).
 
 ---
 
-
 ### InputType <a name="InputType" id="awscdk-appsync-utils.InputType"></a>
 
 - *Implements:* <a href="#awscdk-appsync-utils.IIntermediateType">IIntermediateType</a>
@@ -2589,7 +2611,6 @@ public toString(): string
 
 Generate the string of this input type.
 
-
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -2622,7 +2643,6 @@ public readonly name: string;
 the name of this type.
 
 ---
-
 
 ### InterfaceType <a name="InterfaceType" id="awscdk-appsync-utils.InterfaceType"></a>
 
@@ -2709,7 +2729,6 @@ public toString(): string
 
 Generate the string of this object type.
 
-
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -2756,7 +2775,6 @@ public readonly directives: Directive[];
 the directives for this object type.
 
 ---
-
 
 ### ObjectType <a name="ObjectType" id="awscdk-appsync-utils.ObjectType"></a>
 
@@ -2843,7 +2861,6 @@ public toString(): string
 
 Generate the string of this object type.
 
-
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -2917,7 +2934,6 @@ public readonly resolvers: Resolver[];
 The resolvers linked to this data source.
 
 ---
-
 
 ### ResolvableField <a name="ResolvableField" id="awscdk-appsync-utils.ResolvableField"></a>
 
@@ -3381,7 +3397,6 @@ The options to make this field resolvable.
 
 ---
 
-
 ### UnionType <a name="UnionType" id="awscdk-appsync-utils.UnionType"></a>
 
 - *Implements:* <a href="#awscdk-appsync-utils.IIntermediateType">IIntermediateType</a>
@@ -3470,7 +3485,6 @@ public toString(): string
 
 Generate the string of this Union type.
 
-
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -3503,7 +3517,6 @@ public readonly name: string;
 the name of this type.
 
 ---
-
 
 ## Protocols <a name="Protocols" id="Protocols"></a>
 
@@ -3823,13 +3836,11 @@ Often used as a key for a cache and not intended to be human-readable.
 
 ---
 
-
 ##### `STRING` <a name="STRING" id="awscdk-appsync-utils.Type.STRING"></a>
 
 `String` scalar type is a free-form human-readable text.
 
 ---
-
 
 ##### `INT` <a name="INT" id="awscdk-appsync-utils.Type.INT"></a>
 
@@ -3837,20 +3848,17 @@ Often used as a key for a cache and not intended to be human-readable.
 
 ---
 
-
 ##### `FLOAT` <a name="FLOAT" id="awscdk-appsync-utils.Type.FLOAT"></a>
 
 `Float` scalar type is a signed double-precision fractional value.
 
 ---
 
-
 ##### `BOOLEAN` <a name="BOOLEAN" id="awscdk-appsync-utils.Type.BOOLEAN"></a>
 
 `Boolean` scalar type is a boolean value: true or false.
 
 ---
-
 
 ##### `AWS_DATE` <a name="AWS_DATE" id="awscdk-appsync-utils.Type.AWS_DATE"></a>
 
@@ -3862,7 +3870,6 @@ In other words, accepts date strings in the form of `YYYY-MM-DD`. It accepts tim
 
 ---
 
-
 ##### `AWS_TIME` <a name="AWS_TIME" id="awscdk-appsync-utils.Type.AWS_TIME"></a>
 
 `AWSTime` scalar type represents a valid extended `ISO 8601 Time` string.
@@ -3872,7 +3879,6 @@ In other words, accepts date strings in the form of `hh:mm:ss.sss`. It accepts t
 > [https://en.wikipedia.org/wiki/ISO_8601#Times](https://en.wikipedia.org/wiki/ISO_8601#Times)
 
 ---
-
 
 ##### `AWS_DATE_TIME` <a name="AWS_DATE_TIME" id="awscdk-appsync-utils.Type.AWS_DATE_TIME"></a>
 
@@ -3884,7 +3890,6 @@ In other words, accepts date strings in the form of `YYYY-MM-DDThh:mm:ss.sssZ`. 
 
 ---
 
-
 ##### `AWS_TIMESTAMP` <a name="AWS_TIMESTAMP" id="awscdk-appsync-utils.Type.AWS_TIMESTAMP"></a>
 
 `AWSTimestamp` scalar type represents the number of seconds since `1970-01-01T00:00Z`.
@@ -3893,20 +3898,17 @@ Timestamps are serialized and deserialized as numbers.
 
 ---
 
-
 ##### `AWS_EMAIL` <a name="AWS_EMAIL" id="awscdk-appsync-utils.Type.AWS_EMAIL"></a>
 
 `AWSEmail` scalar type represents an email address string (i.e.`username@example.com`).
 
 ---
 
-
 ##### `AWS_JSON` <a name="AWS_JSON" id="awscdk-appsync-utils.Type.AWS_JSON"></a>
 
 `AWSJson` scalar type represents a JSON string.
 
 ---
-
 
 ##### `AWS_URL` <a name="AWS_URL" id="awscdk-appsync-utils.Type.AWS_URL"></a>
 
@@ -3916,7 +3918,6 @@ URLs wihtout schemes or contain double slashes are considered invalid.
 
 ---
 
-
 ##### `AWS_PHONE` <a name="AWS_PHONE" id="awscdk-appsync-utils.Type.AWS_PHONE"></a>
 
 `AWSPhone` scalar type represents a valid phone number. Phone numbers maybe be whitespace delimited or hyphenated.
@@ -3925,17 +3926,14 @@ The number can specify a country code at the beginning, but is not required for 
 
 ---
 
-
 ##### `AWS_IP_ADDRESS` <a name="AWS_IP_ADDRESS" id="awscdk-appsync-utils.Type.AWS_IP_ADDRESS"></a>
 
 `AWSIPAddress` scalar type respresents a valid `IPv4` of `IPv6` address string.
 
 ---
 
-
 ##### `INTERMEDIATE` <a name="INTERMEDIATE" id="awscdk-appsync-utils.Type.INTERMEDIATE"></a>
 
 Type used for Intermediate Types (i.e. an interface or an object type).
 
 ---
-
