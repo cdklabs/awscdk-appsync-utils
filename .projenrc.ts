@@ -1,4 +1,4 @@
-const { awscdk } = require('projen');
+import { awscdk } from 'projen';
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Mitchell Valine',
@@ -6,6 +6,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkVersion: '2.60.0',
   defaultReleaseBranch: 'main',
   name: 'awscdk-appsync-utils',
+  projenrcTs: true,
   repositoryUrl: 'https://github.com/cdklabs/awscdk-appsync-utils.git',
   description: 'Utilities for creating appsync apis using aws-cdk',
   // Auto approve PRs by our bot
