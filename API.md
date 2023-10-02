@@ -550,6 +550,270 @@ This project is licensed under the Apache-2.0 License.
 
 # API Reference <a name="API Reference" id="api-reference"></a>
 
+## Constructs <a name="Constructs" id="Constructs"></a>
+
+### SourceApiAssociationMergeOperation <a name="SourceApiAssociationMergeOperation" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation"></a>
+
+The SourceApiAssociationMergeOperation triggers a merge of a source API during a Cloudformation stack update.
+
+This can be used to propagate changes from the source API to the Merged API when the association is using type MANUAL_MERGE.
+If the merge operation fails, it will fail the Cloudformation update and rollback the stack.
+
+#### Initializers <a name="Initializers" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.Initializer"></a>
+
+```typescript
+import { SourceApiAssociationMergeOperation } from 'awscdk-appsync-utils'
+
+new SourceApiAssociationMergeOperation(scope: Construct, id: string, props: SourceApiAssociationMergeOperationProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperation.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperation.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperation.Initializer.parameter.props">props</a></code> | <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps">SourceApiAssociationMergeOperationProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps">SourceApiAssociationMergeOperationProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperation.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperation.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.isConstruct"></a>
+
+```typescript
+import { SourceApiAssociationMergeOperation } from 'awscdk-appsync-utils'
+
+SourceApiAssociationMergeOperation.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperation.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+
+### SourceApiAssociationMergeOperationProvider <a name="SourceApiAssociationMergeOperationProvider" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider"></a>
+
+- *Implements:* <a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a>
+
+SourceApiAssociationMergeProvider class is responsible for constructing the custom resource that will be used for initiating the source API merge during a Cloudformation update.
+
+#### Initializers <a name="Initializers" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.Initializer"></a>
+
+```typescript
+import { SourceApiAssociationMergeOperationProvider } from 'awscdk-appsync-utils'
+
+new SourceApiAssociationMergeOperationProvider(scope: Construct, id: string, props: SourceApiAssociationMergeOperationProviderProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.Initializer.parameter.props">props</a></code> | <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps">SourceApiAssociationMergeOperationProviderProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps">SourceApiAssociationMergeOperationProviderProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.associateSourceApiAssociation">associateSourceApiAssociation</a></code> | This function associates a source api association with the provider. |
+
+---
+
+##### `toString` <a name="toString" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `associateSourceApiAssociation` <a name="associateSourceApiAssociation" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.associateSourceApiAssociation"></a>
+
+```typescript
+public associateSourceApiAssociation(sourceApiAssociation: ISourceApiAssociation): void
+```
+
+This function associates a source api association with the provider.
+
+This method can be used for adding permissions to merge a specific source api association to the custom resource provider.
+
+###### `sourceApiAssociation`<sup>Required</sup> <a name="sourceApiAssociation" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.associateSourceApiAssociation.parameter.sourceApiAssociation"></a>
+
+- *Type:* aws-cdk-lib.aws_appsync.ISourceApiAssociation
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.isConstruct"></a>
+
+```typescript
+import { SourceApiAssociationMergeOperationProvider } from 'awscdk-appsync-utils'
+
+SourceApiAssociationMergeOperationProvider.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.schemaMergeLambda">schemaMergeLambda</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | The lambda function responsible for kicking off the merge operation. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.serviceToken">serviceToken</a></code> | <code>string</code> | Service token for the resource provider. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.sourceApiStablizationLambda">sourceApiStablizationLambda</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | The lambda function response for ensuring that the merge operation finished. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `schemaMergeLambda`<sup>Required</sup> <a name="schemaMergeLambda" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.schemaMergeLambda"></a>
+
+```typescript
+public readonly schemaMergeLambda: Function;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Function
+
+The lambda function responsible for kicking off the merge operation.
+
+---
+
+##### `serviceToken`<sup>Required</sup> <a name="serviceToken" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.serviceToken"></a>
+
+```typescript
+public readonly serviceToken: string;
+```
+
+- *Type:* string
+
+Service token for the resource provider.
+
+---
+
+##### `sourceApiStablizationLambda`<sup>Required</sup> <a name="sourceApiStablizationLambda" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.sourceApiStablizationLambda"></a>
+
+```typescript
+public readonly sourceApiStablizationLambda: Function;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Function
+
+The lambda function response for ensuring that the merge operation finished.
+
+---
+
 
 ## Structs <a name="Structs" id="Structs"></a>
 
@@ -1061,6 +1325,131 @@ public readonly responseMappingTemplate: MappingTemplate;
 - *Default:* No mapping template
 
 The response mapping template for this resolver.
+
+---
+
+### SourceApiAssociationMergeOperationProps <a name="SourceApiAssociationMergeOperationProps" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps"></a>
+
+Properties for SourceApiAssociationMergeOperation which handles triggering a merge operation as a custom resource during a Cloudformation stack update.
+
+#### Initializer <a name="Initializer" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.Initializer"></a>
+
+```typescript
+import { SourceApiAssociationMergeOperationProps } from 'awscdk-appsync-utils'
+
+const sourceApiAssociationMergeOperationProps: SourceApiAssociationMergeOperationProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.mergeOperationProvider">mergeOperationProvider</a></code> | <code><a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a></code> | The merge operation provider construct which is responsible for configuring the Lambda resource that will be invoked during Cloudformation update. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.sourceApiAssociation">sourceApiAssociation</a></code> | <code>aws-cdk-lib.aws_appsync.ISourceApiAssociation</code> | The source api association resource which will be merged. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.alwaysMergeOnStackUpdate">alwaysMergeOnStackUpdate</a></code> | <code>boolean</code> | Flag indicating whether the source api should be merged on every CFN update or not. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.versionIdentifier">versionIdentifier</a></code> | <code>string</code> | The version identifier for the schema merge operation. |
+
+---
+
+##### `mergeOperationProvider`<sup>Required</sup> <a name="mergeOperationProvider" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.mergeOperationProvider"></a>
+
+```typescript
+public readonly mergeOperationProvider: ISourceApiAssociationMergeOperationProvider;
+```
+
+- *Type:* <a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a>
+
+The merge operation provider construct which is responsible for configuring the Lambda resource that will be invoked during Cloudformation update.
+
+---
+
+##### `sourceApiAssociation`<sup>Required</sup> <a name="sourceApiAssociation" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.sourceApiAssociation"></a>
+
+```typescript
+public readonly sourceApiAssociation: ISourceApiAssociation;
+```
+
+- *Type:* aws-cdk-lib.aws_appsync.ISourceApiAssociation
+
+The source api association resource which will be merged.
+
+---
+
+##### `alwaysMergeOnStackUpdate`<sup>Optional</sup> <a name="alwaysMergeOnStackUpdate" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.alwaysMergeOnStackUpdate"></a>
+
+```typescript
+public readonly alwaysMergeOnStackUpdate: boolean;
+```
+
+- *Type:* boolean
+- *Default:* False
+
+Flag indicating whether the source api should be merged on every CFN update or not.
+
+If set to true and there are no changes to the source API, this will result in a no-op merge operation.
+
+---
+
+##### `versionIdentifier`<sup>Optional</sup> <a name="versionIdentifier" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.versionIdentifier"></a>
+
+```typescript
+public readonly versionIdentifier: string;
+```
+
+- *Type:* string
+- *Default:* null
+
+The version identifier for the schema merge operation.
+
+Any change to the version identifier will trigger a merge on the next
+update. Use the version identifier property to control when the source API metadata is merged.
+
+---
+
+### SourceApiAssociationMergeOperationProviderProps <a name="SourceApiAssociationMergeOperationProviderProps" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps"></a>
+
+Properties for SourceApiAssociationMergeOperationProvider.
+
+#### Initializer <a name="Initializer" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps.Initializer"></a>
+
+```typescript
+import { SourceApiAssociationMergeOperationProviderProps } from 'awscdk-appsync-utils'
+
+const sourceApiAssociationMergeOperationProviderProps: SourceApiAssociationMergeOperationProviderProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps.property.pollingInterval">pollingInterval</a></code> | <code>aws-cdk-lib.Duration</code> | Time between calls to the polling Lambda function which determines whether the merge operation is finished or not. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps.property.totalTimeout">totalTimeout</a></code> | <code>aws-cdk-lib.Duration</code> | Total timeout in waiting for the source api association merge operation to complete. |
+
+---
+
+##### `pollingInterval`<sup>Optional</sup> <a name="pollingInterval" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps.property.pollingInterval"></a>
+
+```typescript
+public readonly pollingInterval: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* Duration.seconds(5)
+
+Time between calls to the polling Lambda function which determines whether the merge operation is finished or not.
+
+---
+
+##### `totalTimeout`<sup>Optional</sup> <a name="totalTimeout" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProviderProps.property.totalTimeout"></a>
+
+```typescript
+public readonly totalTimeout: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* Duration.minutes(15)
+
+Total timeout in waiting for the source api association merge operation to complete.
 
 ---
 
@@ -3784,6 +4173,73 @@ public readonly resolvers: Resolver[];
 - *Type:* aws-cdk-lib.aws_appsync.Resolver[]
 
 The resolvers linked to this data source.
+
+---
+
+### ISourceApiAssociationMergeOperationProvider <a name="ISourceApiAssociationMergeOperationProvider" id="awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider"></a>
+
+- *Extends:* constructs.IConstruct
+
+- *Implemented By:* <a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider">SourceApiAssociationMergeOperationProvider</a>, <a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a>
+
+This interface for the provider of the custom resource that will be used to initiate a merge operation during Cloudformation update.
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider.associateSourceApiAssociation">associateSourceApiAssociation</a></code> | This function associates a source api association with the provider. |
+
+---
+
+##### `associateSourceApiAssociation` <a name="associateSourceApiAssociation" id="awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider.associateSourceApiAssociation"></a>
+
+```typescript
+public associateSourceApiAssociation(sourceApiAssociation: ISourceApiAssociation): void
+```
+
+This function associates a source api association with the provider.
+
+This method can be used for adding permissions to merge a specific source api association to the custom resource provider.
+
+###### `sourceApiAssociation`<sup>Required</sup> <a name="sourceApiAssociation" id="awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider.associateSourceApiAssociation.parameter.sourceApiAssociation"></a>
+
+- *Type:* aws-cdk-lib.aws_appsync.ISourceApiAssociation
+
+The association to associate.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider.property.serviceToken">serviceToken</a></code> | <code>string</code> | Service token which is used for identifying the handler used for the merge operation custom resource. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `serviceToken`<sup>Required</sup> <a name="serviceToken" id="awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider.property.serviceToken"></a>
+
+```typescript
+public readonly serviceToken: string;
+```
+
+- *Type:* string
+
+Service token which is used for identifying the handler used for the merge operation custom resource.
 
 ---
 
