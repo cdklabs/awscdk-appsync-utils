@@ -124,7 +124,7 @@ export interface SourceApiAssociationMergeOperationProps {
      * The merge operation provider construct which is responsible for configuring the Lambda resource that will be invoked during
      * Cloudformation update.
      */
-  readonly mergeOperationProvider: ISourceApiAssociationMergeOperationProvider;
+  readonly mergeOperationProvider?: ISourceApiAssociationMergeOperationProvider;
 
   /**
      * The version identifier for the schema merge operation. Any change to the version identifier will trigger a merge on the next
@@ -189,7 +189,14 @@ export class SourceApiAssociationMergeOperation extends Construct {
       throw new Error('A version identifier must be specified when the alwaysMergeOnStackUpdate flag is false');
     }
 
-    props.mergeOperationProvider.associateSourceApiAssociation(props.sourceApiAssociation);
+    var mergeOperationProvider = props.mergeOperationProvider;
+    if (!mergeOperationProvider) {
+      mergeOperationProvider = new SourceApiAssociationMergeOperationProvider(this, 'SchemaMergeOperationProvider', {
+        pollingInterval: Duration.seconds(30),
+      });
+    }
+
+    mergeOperationProvider.associateSourceApiAssociation(props.sourceApiAssociation);
 
     var properties: MergeResourceProperties = {
       associationId: props.sourceApiAssociation.associationId,
@@ -211,7 +218,7 @@ export class SourceApiAssociationMergeOperation extends Construct {
 
     // Custom resource for the merge of this specific source api association.
     const customResource = new CustomResource(this, 'SourceApiSchemaMergeOperation', {
-      serviceToken: props.mergeOperationProvider.serviceToken,
+      serviceToken: mergeOperationProvider.serviceToken,
       resourceType: 'Custom::AppSyncSourceApiMergeOperation',
       properties: {
         ...properties,

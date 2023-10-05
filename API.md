@@ -579,7 +579,8 @@ const association2 = new appsync.SourceApiAssociation(this, 'SourceApiAssociatio
 });
 
 // The SourceApiAssociationMergeOperationProvider construct creates the Lambda handlers for submitting the merge operation
-// and ensuring that it succeeded or failed.
+// and ensuring that it succeeded or failed. It can optionally be added to the schema merge operation to share the same provider
+// across multiple merge operations.
 const provider = new appsync.SourceApiAssociationMergeOperationProvider(this, 'SchemaMergeProvider', {
   pollingInterval: cdk.Duration.seconds(5),
   totalTimeout: cdk.Duration.minutes(30)
@@ -1409,22 +1410,10 @@ const sourceApiAssociationMergeOperationProps: SourceApiAssociationMergeOperatio
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.mergeOperationProvider">mergeOperationProvider</a></code> | <code><a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a></code> | The merge operation provider construct which is responsible for configuring the Lambda resource that will be invoked during Cloudformation update. |
 | <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.sourceApiAssociation">sourceApiAssociation</a></code> | <code>aws-cdk-lib.aws_appsync.ISourceApiAssociation</code> | The source api association resource which will be merged. |
 | <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.alwaysMergeOnStackUpdate">alwaysMergeOnStackUpdate</a></code> | <code>boolean</code> | Flag indicating whether the source api should be merged on every CFN update or not. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.mergeOperationProvider">mergeOperationProvider</a></code> | <code><a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a></code> | The merge operation provider construct which is responsible for configuring the Lambda resource that will be invoked during Cloudformation update. |
 | <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.versionIdentifier">versionIdentifier</a></code> | <code>string</code> | The version identifier for the schema merge operation. |
-
----
-
-##### `mergeOperationProvider`<sup>Required</sup> <a name="mergeOperationProvider" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.mergeOperationProvider"></a>
-
-```typescript
-public readonly mergeOperationProvider: ISourceApiAssociationMergeOperationProvider;
-```
-
-- *Type:* <a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a>
-
-The merge operation provider construct which is responsible for configuring the Lambda resource that will be invoked during Cloudformation update.
 
 ---
 
@@ -1452,6 +1441,18 @@ public readonly alwaysMergeOnStackUpdate: boolean;
 Flag indicating whether the source api should be merged on every CFN update or not.
 
 If set to true and there are no changes to the source API, this will result in a no-op merge operation.
+
+---
+
+##### `mergeOperationProvider`<sup>Optional</sup> <a name="mergeOperationProvider" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProps.property.mergeOperationProvider"></a>
+
+```typescript
+public readonly mergeOperationProvider: ISourceApiAssociationMergeOperationProvider;
+```
+
+- *Type:* <a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a>
+
+The merge operation provider construct which is responsible for configuring the Lambda resource that will be invoked during Cloudformation update.
 
 ---
 

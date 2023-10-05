@@ -579,7 +579,8 @@ const association2 = new appsync.SourceApiAssociation(this, 'SourceApiAssociatio
 });
 
 // The SourceApiAssociationMergeOperationProvider construct creates the Lambda handlers for submitting the merge operation 
-// and ensuring that it succeeded or failed.
+// and ensuring that it succeeded or failed. It can optionally be added to the schema merge operation to share the same provider
+// across multiple merge operations.
 const provider = new appsync.SourceApiAssociationMergeOperationProvider(this, 'SchemaMergeProvider', {
   pollingInterval: cdk.Duration.seconds(5),
   totalTimeout: cdk.Duration.minutes(30)
