@@ -78,7 +78,7 @@ test('source api association merge operation with version identifier', () => {
   Template.fromStack(stack).hasResourceProperties('Custom::AppSyncSourceApiMergeOperation', {
     ServiceToken: {
       'Fn::GetAtt': [
-        'MergeProviderSchemaMergeOperationProviderframeworkonEventC11E8EA5',
+        'SchemaMergeOperationProviderframeworkonEventC84B1BAA',
         'Arn',
       ],
     },
@@ -114,7 +114,7 @@ test('source api association merge operation with always update', () => {
   Template.fromStack(stack).resourceCountIs('Custom::AppSyncSourceApiMergeOperation', 1);
 });
 
-test('source api association merge operation with version identifier', () => {
+test('source api association merge operations with version identifier', () => {
   new SourceApiAssociationMergeOperation(stack, 'SourceApi1Merge', {
     sourceApiAssociation: sourceApiAssociation1,
     versionIdentifier: '1',
@@ -141,7 +141,7 @@ test('source api association merge operation with version identifier', () => {
   Template.fromStack(stack).hasResourceProperties('Custom::AppSyncSourceApiMergeOperation', {
     ServiceToken: {
       'Fn::GetAtt': [
-        'MergeProviderSchemaMergeOperationProviderframeworkonEventC11E8EA5',
+        'SchemaMergeOperationProviderframeworkonEventC84B1BAA',
         'Arn',
       ],
     },
@@ -169,7 +169,7 @@ test('source api association merge operation with version identifier', () => {
   Template.fromStack(stack).hasResourceProperties('Custom::AppSyncSourceApiMergeOperation', {
     ServiceToken: {
       'Fn::GetAtt': [
-        'MergeProviderSchemaMergeOperationProviderframeworkonEventC11E8EA5',
+        'SchemaMergeOperationProviderframeworkonEventC84B1BAA',
         'Arn',
       ],
     },
