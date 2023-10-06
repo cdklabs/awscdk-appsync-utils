@@ -578,19 +578,10 @@ const association2 = new appsync.SourceApiAssociation(this, 'SourceApiAssociatio
    mergedApiExecutionRole: remoteExecutionRole,
 });
 
-// The SourceApiAssociationMergeOperationProvider construct creates the Lambda handlers for submitting the merge operation
-// and ensuring that it succeeded or failed. It can optionally be added to the schema merge operation to share the same provider
-// across multiple merge operations.
-const provider = new appsync.SourceApiAssociationMergeOperationProvider(this, 'SchemaMergeProvider', {
-  pollingInterval: cdk.Duration.seconds(5),
-  totalTimeout: cdk.Duration.minutes(30)
-});
-
 // The version id can be any identifier defined by the developer. Changing the version identifier allows you to control
 // whether a merge operation will take place during deployment.
 new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation1', {
   sourceApiAssociation: association1,
-  mergeOperationProvider: provider,
   versionIdentifier: '1',
 });
 
@@ -599,7 +590,6 @@ new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation1', {
 //do not actually change the MergedAPI.
 new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation2', {
   sourceApiAssociation: association2,
-  mergeOperationProvider: provider,
   alwaysMergeOnStackUpdate: true,
 });
 ```

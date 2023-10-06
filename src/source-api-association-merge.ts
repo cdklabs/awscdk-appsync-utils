@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import * as path from 'path';
-import { CfnResource, CustomResource, Duration } from 'aws-cdk-lib';
+import { CfnResource, CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import { ISourceApiAssociation } from 'aws-cdk-lib/aws-appsync';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Function, Runtime } from 'aws-cdk-lib/aws-lambda';
@@ -191,9 +191,7 @@ export class SourceApiAssociationMergeOperation extends Construct {
 
     var mergeOperationProvider = props.mergeOperationProvider;
     if (!mergeOperationProvider) {
-      mergeOperationProvider = new SourceApiAssociationMergeOperationProvider(this, 'SchemaMergeOperationProvider', {
-        pollingInterval: Duration.seconds(30),
-      });
+      mergeOperationProvider = this.getOrCreateMergeOperationProvider();
     }
 
     mergeOperationProvider.associateSourceApiAssociation(props.sourceApiAssociation);
@@ -236,5 +234,22 @@ export class SourceApiAssociationMergeOperation extends Construct {
         customResource.node.addDependency(child.node.defaultChild);
       }
     });
+  }
+
+  /**
+   * Get an existing merge operation provider from the current stack or create a new stack scoped merge operation provider.
+   * @returns SourceApiAssociationMergeOperationProvider
+   */
+  private getOrCreateMergeOperationProvider(): SourceApiAssociationMergeOperationProvider {
+    const constructName = 'SchemaMergeOperationProvider';
+    const stack = Stack.of(this);
+    const existing = stack.node.tryFindChild(constructName);
+    if (!existing) {
+      return new SourceApiAssociationMergeOperationProvider(stack, 'SchemaMergeOperationProvider', {
+        pollingInterval: Duration.seconds(30),
+      });
+    } else {
+      return existing as SourceApiAssociationMergeOperationProvider;
+    }
   }
 }

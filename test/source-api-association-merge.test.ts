@@ -3,7 +3,7 @@ import { Template } from 'aws-cdk-lib/assertions';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as cdk from 'aws-cdk-lib/core';
-import { SourceApiAssociationMergeOperation, SourceApiAssociationMergeOperationProvider } from '../src';
+import { SourceApiAssociationMergeOperation } from '../src';
 
 let stack: cdk.Stack;
 let api1: appsync.IGraphqlApi;
@@ -12,7 +12,6 @@ let mergedApiExecutionRole: iam.Role;
 let mergedApi: appsync.IGraphqlApi;
 let sourceApiAssociation1: appsync.SourceApiAssociation;
 let sourceApiAssociation2: appsync.SourceApiAssociation;
-let provider: SourceApiAssociationMergeOperationProvider;
 beforeEach(() => {
   stack = new cdk.Stack();
 
@@ -55,17 +54,11 @@ beforeEach(() => {
     mergeType: appsync.MergeType.MANUAL_MERGE,
     mergedApiExecutionRole: mergedApiExecutionRole,
   });
-
-  provider = new SourceApiAssociationMergeOperationProvider(stack, 'MergeProvider', {
-    pollingInterval: cdk.Duration.seconds(30),
-    totalTimeout: cdk.Duration.minutes(5),
-  });
 });
 
 test('source api association merge operation with version identifier', () => {
   new SourceApiAssociationMergeOperation(stack, 'SourceApi1Merge', {
     sourceApiAssociation: sourceApiAssociation1,
-    mergeOperationProvider: provider,
     versionIdentifier: '1',
   });
 
@@ -114,7 +107,6 @@ test('source api association merge operation with version identifier', () => {
 test('source api association merge operation with always update', () => {
   new SourceApiAssociationMergeOperation(stack, 'SourceApi1Merge', {
     sourceApiAssociation: sourceApiAssociation1,
-    mergeOperationProvider: provider,
     alwaysMergeOnStackUpdate: true,
   });
 
@@ -125,13 +117,11 @@ test('source api association merge operation with always update', () => {
 test('source api association merge operation with version identifier', () => {
   new SourceApiAssociationMergeOperation(stack, 'SourceApi1Merge', {
     sourceApiAssociation: sourceApiAssociation1,
-    mergeOperationProvider: provider,
     versionIdentifier: '1',
   });
 
   new SourceApiAssociationMergeOperation(stack, 'SourceApi2Merge', {
     sourceApiAssociation: sourceApiAssociation2,
-    mergeOperationProvider: provider,
     versionIdentifier: '1',
   });
 
