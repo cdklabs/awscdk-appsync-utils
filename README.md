@@ -538,6 +538,62 @@ api.addSubscription('addedFilm', new Field({
 ```
 
 To learn more about top level operations, check out the docs [here](https://docs.aws.amazon.com/appsync/latest/devguide/real-time-data.html).
+
+## Merge Source API to Merged API Using A Custom Resource
+
+The SourceApiAssociationMergeOperation construct provides the ability to merge a source api to a Merged Api
+and invoke a merge within a Cloudformation custom resource. If the merge operation fails with a conflict, the 
+Cloudformation update will fail and rollback the changes to the source API in the stack.
+
+```ts
+import * as cdk from 'aws-cdk-lib';
+
+const sourceApi1ToMerge = new appsync.GraphqlApi(this, 'FirstSourceAPI', {
+  name: 'FirstSourceAPI',
+  definition: appsync.Definition.fromFile(path.join(__dirname, 'appsync.merged-api-1.graphql')),
+});
+
+const sourceApi2ToMerge = new appsync.GraphqlApi(this, 'SecondSourceAPI', {
+  name: 'SecondSourceAPI',
+  definition: appsync.Definition.fromFile(path.join(__dirname, 'appsync.merged-api-2.graphql')),
+});
+
+const remoteMergedApi = appsync.GraphqlApi.fromGraphqlApiAttributes(this, 'ImportedMergedApi', {
+  graphqlApiId: 'MyApiId',
+  graphqlApiArn: 'MyApiArn',
+});
+
+const remoteExecutionRole = iam.Role.fromRoleArn(this, 'ExecutionRole', 'arn:aws:iam::ACCOUNT:role/MyExistingRole');
+const association1 = new appsync.SourceApiAssociation(this, 'SourceApiAssociation2', {
+   sourceApi: sourceApi1ToMerge,
+   mergedApi: remoteMergedApi,
+   mergeType: appsync.MergeType.MANUAL_MERGE,
+   mergedApiExecutionRole: remoteExecutionRole,
+});
+
+const association2 = new appsync.SourceApiAssociation(this, 'SourceApiAssociation2', {
+   sourceApi: sourceApi2ToMerge,
+   mergedApi: remoteMergedApi,
+   mergeType: appsync.MergeType.MANUAL_MERGE,
+   mergedApiExecutionRole: remoteExecutionRole,
+});
+
+// The version id can be any identifier defined by the developer. Changing the version identifier allows you to control
+// whether a merge operation will take place during deployment.
+new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation1', {
+  sourceApiAssociation: association1,
+  versionIdentifier: '1',
+});
+
+// Optionally, you can add the alwaysMergeOnStackUpdate flag instead which will ensure that the merge operation occurs 
+// during every stack update, regardless if there was a change or not. Note that this may lead to merge operations that 
+//do not actually change the MergedAPI.
+new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation2', {
+  sourceApiAssociation: association2,
+  alwaysMergeOnStackUpdate: true,
+});
+```
+
 ## Contributing
 
 This library leans towards high level and experimental features for appsync cdk users. If you have an idea for additional utilities please create an issue describing the feature.

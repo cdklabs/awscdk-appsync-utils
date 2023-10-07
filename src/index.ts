@@ -7,6 +7,7 @@ import { ObjectType } from './schema-intermediate';
 export * from './schema-base';
 export * from './schema-field';
 export * from './schema-intermediate';
+export * from './source-api-association-merge';
 
 export class CodeFirstSchema implements ISchema {
   /**

@@ -1,6 +1,14 @@
 {
   "dependencies": [
     {
+      "name": "@aws-sdk/client-appsync",
+      "type": "build"
+    },
+    {
+      "name": "@types/aws-lambda",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "version": "^27",
       "type": "build"
@@ -22,7 +30,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.60.0",
+      "version": "2.99.0",
       "type": "build"
     },
     {
@@ -118,7 +126,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.60.0",
+      "version": "^2.99.0",
       "type": "peer"
     },
     {
