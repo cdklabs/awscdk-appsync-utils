@@ -87,7 +87,7 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "esbuild ./src/mergeSourceApiSchemaHandler/index.ts --bundle --outfile=./lib/mergeSourceApiSchemaHandler/index.js"
+          "exec": "esbuild ./src/mergeSourceApiSchemaHandler/index.ts --bundle --outfile=./lib/mergeSourceApiSchemaHandler/index.js --platform=node --format=cjs"
         },
         {
           "exec": "jsii --silence-warnings=reserved-word"
