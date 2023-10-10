@@ -3,8 +3,7 @@ import * as path from 'path';
 import { CfnResource, CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import { ISourceApiAssociation } from 'aws-cdk-lib/aws-appsync';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { Function, Runtime } from 'aws-cdk-lib/aws-lambda';
-import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { Code, Runtime, SingletonFunction } from 'aws-cdk-lib/aws-lambda';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct, IConstruct } from 'constructs';
 
@@ -60,28 +59,30 @@ export class SourceApiAssociationMergeOperationProvider extends Construct implem
   /**
      * The lambda function responsible for kicking off the merge operation.
      */
-  public readonly schemaMergeLambda: Function;
+  public readonly schemaMergeLambda: SingletonFunction;
 
   /**
      * The lambda function response for ensuring that the merge operation finished.
      */
-  public readonly sourceApiStablizationLambda: Function;
+  public readonly sourceApiStablizationLambda: SingletonFunction;
 
   constructor(scope: Construct, id: string, props: SourceApiAssociationMergeOperationProviderProps) {
     super(scope, id);
 
-    this.schemaMergeLambda = new NodejsFunction(this, 'MergeSourceApiSchemaLambda', {
+    this.schemaMergeLambda = new SingletonFunction(this, 'MergeSourceApiSchemaLambda', {
       runtime: Runtime.NODEJS_LATEST,
-      entry: path.join(__dirname, 'mergeSourceApiSchemaHandler', 'index.ts'),
-      handler: 'onEvent',
+      code: Code.fromAsset(path.join(__dirname, 'mergeSourceApiSchemaHandler')),
+      handler: 'index.onEvent',
       timeout: Duration.minutes(2),
+      uuid: '6148f39b-95bb-47e7-8a35-40adb8b93a7b',
     });
 
-    this.sourceApiStablizationLambda = new NodejsFunction(this, 'PollSourceApiMergeLambda', {
+    this.sourceApiStablizationLambda = new SingletonFunction(this, 'PollSourceApiMergeLambda', {
       runtime: Runtime.NODEJS_LATEST,
-      entry: path.join(__dirname, 'mergeSourceApiSchemaHandler', 'index.ts'),
-      handler: 'isComplete',
+      code: Code.fromAsset(path.join(__dirname, 'mergeSourceApiSchemaHandler')),
+      handler: 'index.isComplete',
       timeout: Duration.minutes(2),
+      uuid: '163e01ec-6f29-4bf4-b3b1-11245b00a6bc',
     });
 
     const provider = new Provider(this, 'SchemaMergeOperationProvider', {

@@ -816,9 +816,9 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.schemaMergeLambda">schemaMergeLambda</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | The lambda function responsible for kicking off the merge operation. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.schemaMergeLambda">schemaMergeLambda</a></code> | <code>aws-cdk-lib.aws_lambda.SingletonFunction</code> | The lambda function responsible for kicking off the merge operation. |
 | <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.serviceToken">serviceToken</a></code> | <code>string</code> | Service token for the resource provider. |
-| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.sourceApiStablizationLambda">sourceApiStablizationLambda</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | The lambda function response for ensuring that the merge operation finished. |
+| <code><a href="#awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.sourceApiStablizationLambda">sourceApiStablizationLambda</a></code> | <code>aws-cdk-lib.aws_lambda.SingletonFunction</code> | The lambda function response for ensuring that the merge operation finished. |
 
 ---
 
@@ -837,10 +837,10 @@ The tree node.
 ##### `schemaMergeLambda`<sup>Required</sup> <a name="schemaMergeLambda" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.schemaMergeLambda"></a>
 
 ```typescript
-public readonly schemaMergeLambda: Function;
+public readonly schemaMergeLambda: SingletonFunction;
 ```
 
-- *Type:* aws-cdk-lib.aws_lambda.Function
+- *Type:* aws-cdk-lib.aws_lambda.SingletonFunction
 
 The lambda function responsible for kicking off the merge operation.
 
@@ -861,10 +861,10 @@ Service token for the resource provider.
 ##### `sourceApiStablizationLambda`<sup>Required</sup> <a name="sourceApiStablizationLambda" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider.property.sourceApiStablizationLambda"></a>
 
 ```typescript
-public readonly sourceApiStablizationLambda: Function;
+public readonly sourceApiStablizationLambda: SingletonFunction;
 ```
 
-- *Type:* aws-cdk-lib.aws_lambda.Function
+- *Type:* aws-cdk-lib.aws_lambda.SingletonFunction
 
 The lambda function response for ensuring that the merge operation finished.
 

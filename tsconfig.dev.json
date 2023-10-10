@@ -33,6 +33,7 @@
     "projenrc/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/mergeSourceApiSchemaHandler/index.ts"
   ]
 }
