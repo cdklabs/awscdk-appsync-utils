@@ -49,7 +49,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 });
 
 project.compileTask.prependExec(
-  'esbuild ./src/mergeSourceApiSchemaHandler/index.ts --bundle --outfile=./lib/mergeSourceApiSchemaHandler/index.js',
+  'esbuild ./src/mergeSourceApiSchemaHandler/index.ts --bundle --outfile=./lib/mergeSourceApiSchemaHandler/index.js --platform=node --format=cjs',
 );
 
 project.addDevDeps('esbuild');
