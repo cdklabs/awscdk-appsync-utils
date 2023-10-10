@@ -9,7 +9,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   projenrcTs: true,
   eslintOptions: {
     dirs: ['src'],
-    ignorePatterns: ['src/mergeSourceApiSchemaHandler/index.ts'],
+    ignorePatterns: ['*.js',
+      '*.d.ts',
+      'node_modules/',
+      '*.generated.ts',
+      'coverage',
+      'src/mergeSourceApiSchemaHandler/'],
   },
   tsconfig: {
     compilerOptions: {},

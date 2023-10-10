@@ -34,7 +34,12 @@
     }
   },
   "ignorePatterns": [
-    "src/mergeSourceApiSchemaHandler/index.ts",
+    "*.js",
+    "*.d.ts",
+    "node_modules/",
+    "*.generated.ts",
+    "coverage",
+    "src/mergeSourceApiSchemaHandler/",
     "!.projenrc.ts",
     "!projenrc/**/*.ts"
   ],
