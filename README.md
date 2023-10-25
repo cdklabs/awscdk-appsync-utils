@@ -564,7 +564,7 @@ const remoteMergedApi = appsync.GraphqlApi.fromGraphqlApiAttributes(this, 'Impor
 });
 
 const remoteExecutionRole = iam.Role.fromRoleArn(this, 'ExecutionRole', 'arn:aws:iam::ACCOUNT:role/MyExistingRole');
-const association1 = new appsync.SourceApiAssociation(this, 'SourceApiAssociation2', {
+const association1 = new appsync.SourceApiAssociation(this, 'SourceApiAssociation1', {
    sourceApi: sourceApi1ToMerge,
    mergedApi: remoteMergedApi,
    mergeType: appsync.MergeType.MANUAL_MERGE,
@@ -580,7 +580,7 @@ const association2 = new appsync.SourceApiAssociation(this, 'SourceApiAssociatio
 
 // The version id can be any identifier defined by the developer. Changing the version identifier allows you to control
 // whether a merge operation will take place during deployment.
-new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation1', {
+SourceApiAssociationMergeOperation(this, 'MergeOperation1', {
   sourceApiAssociation: association1,
   versionIdentifier: '1',
 });
@@ -588,7 +588,7 @@ new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation1', {
 // Optionally, you can add the alwaysMergeOnStackUpdate flag instead which will ensure that the merge operation occurs 
 // during every stack update, regardless if there was a change or not. Note that this may lead to merge operations that 
 //do not actually change the MergedAPI.
-new appsync.SourceApiAssociationMergeOperation(this, 'MergeOperation2', {
+SourceApiAssociationMergeOperation(this, 'MergeOperation2', {
   sourceApiAssociation: association2,
   alwaysMergeOnStackUpdate: true,
 });
