@@ -39,7 +39,6 @@
     "node_modules/",
     "*.generated.ts",
     "coverage",
-    "src/mergeSourceApiSchemaHandler/",
     "!.projenrc.ts",
     "!projenrc/**/*.ts"
   ],
