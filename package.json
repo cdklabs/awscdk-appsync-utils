@@ -39,10 +39,10 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-appsync": "^3.504.0",
+    "@aws-sdk/client-appsync": "^3.509.0",
     "@types/aws-lambda": "^8.10.133",
     "@types/jest": "^27",
-    "@types/node": "^16",
+    "@types/node": "^16 <= 16.18.78",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "aws-cdk-lib": "2.110.0",
@@ -57,7 +57,7 @@
     "jsii-docgen": "^7.2.9",
     "jsii-pacmak": "^1.94.0",
     "jsii-rosetta": "1.x",
-    "projen": "^0.79.7",
+    "projen": "^0.79.9",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.2",
