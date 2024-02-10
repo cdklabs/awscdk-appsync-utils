@@ -311,13 +311,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws-sdk/client-appsync,@types/aws-lambda,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest-junit,jest,jsii-diff,jsii-docgen,jsii-pacmak,projen,standard-version,ts-jest,ts-node,typescript,aws-cdk-lib,constructs"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws-sdk/client-appsync,@types/aws-lambda,eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff,jsii-docgen,jsii-pacmak,jsii-rosetta,jsii,projen,ts-node,typescript"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-sdk/client-appsync @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak projen standard-version ts-jest ts-node typescript aws-cdk-lib constructs"
+          "exec": "yarn upgrade @aws-sdk/client-appsync @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii projen standard-version ts-jest ts-node typescript aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"
