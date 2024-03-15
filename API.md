@@ -1283,10 +1283,14 @@ const resolvableFieldOptions: ResolvableFieldOptions = { ... }
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.returnType">returnType</a></code> | <code><a href="#awscdk-appsync-utils.GraphqlType">GraphqlType</a></code> | The return type for this field. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.args">args</a></code> | <code>{[ key: string ]: <a href="#awscdk-appsync-utils.GraphqlType">GraphqlType</a>}</code> | The arguments for this field. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.directives">directives</a></code> | <code><a href="#awscdk-appsync-utils.Directive">Directive</a>[]</code> | the directives for this field. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.cachingConfig">cachingConfig</a></code> | <code>aws-cdk-lib.aws_appsync.CachingConfig</code> | The caching configuration for this resolver. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.code">code</a></code> | <code>aws-cdk-lib.aws_appsync.Code</code> | The function code. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.dataSource">dataSource</a></code> | <code>aws-cdk-lib.aws_appsync.BaseDataSource</code> | The data source creating linked to this resolvable field. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.maxBatchSize">maxBatchSize</a></code> | <code>number</code> | The maximum number of elements per batch, when using batch invoke. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.pipelineConfig">pipelineConfig</a></code> | <code>aws-cdk-lib.aws_appsync.IAppsyncFunction[]</code> | configuration of the pipeline resolver. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.requestMappingTemplate">requestMappingTemplate</a></code> | <code>aws-cdk-lib.aws_appsync.MappingTemplate</code> | The request mapping template for this resolver. |
 | <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.responseMappingTemplate">responseMappingTemplate</a></code> | <code>aws-cdk-lib.aws_appsync.MappingTemplate</code> | The response mapping template for this resolver. |
+| <code><a href="#awscdk-appsync-utils.ResolvableFieldOptions.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_appsync.FunctionRuntime</code> | The functions runtime. |
 
 ---
 
@@ -1332,6 +1336,32 @@ the directives for this field.
 
 ---
 
+##### `cachingConfig`<sup>Optional</sup> <a name="cachingConfig" id="awscdk-appsync-utils.ResolvableFieldOptions.property.cachingConfig"></a>
+
+```typescript
+public readonly cachingConfig: CachingConfig;
+```
+
+- *Type:* aws-cdk-lib.aws_appsync.CachingConfig
+- *Default:* No caching configuration
+
+The caching configuration for this resolver.
+
+---
+
+##### `code`<sup>Optional</sup> <a name="code" id="awscdk-appsync-utils.ResolvableFieldOptions.property.code"></a>
+
+```typescript
+public readonly code: Code;
+```
+
+- *Type:* aws-cdk-lib.aws_appsync.Code
+- *Default:* no code is used
+
+The function code.
+
+---
+
 ##### `dataSource`<sup>Optional</sup> <a name="dataSource" id="awscdk-appsync-utils.ResolvableFieldOptions.property.dataSource"></a>
 
 ```typescript
@@ -1345,6 +1375,19 @@ The data source creating linked to this resolvable field.
 
 ---
 
+##### `maxBatchSize`<sup>Optional</sup> <a name="maxBatchSize" id="awscdk-appsync-utils.ResolvableFieldOptions.property.maxBatchSize"></a>
+
+```typescript
+public readonly maxBatchSize: number;
+```
+
+- *Type:* number
+- *Default:* No max batch size
+
+The maximum number of elements per batch, when using batch invoke.
+
+---
+
 ##### `pipelineConfig`<sup>Optional</sup> <a name="pipelineConfig" id="awscdk-appsync-utils.ResolvableFieldOptions.property.pipelineConfig"></a>
 
 ```typescript
@@ -1352,7 +1395,7 @@ public readonly pipelineConfig: IAppsyncFunction[];
 ```
 
 - *Type:* aws-cdk-lib.aws_appsync.IAppsyncFunction[]
-- *Default:* no pipeline resolver configuration An empty array or undefined prop will set resolver to be of type unit
+- *Default:* no pipeline resolver configuration An empty array | undefined sets resolver to be of kind, unit
 
 configuration of the pipeline resolver.
 
@@ -1381,6 +1424,19 @@ public readonly responseMappingTemplate: MappingTemplate;
 - *Default:* No mapping template
 
 The response mapping template for this resolver.
+
+---
+
+##### `runtime`<sup>Optional</sup> <a name="runtime" id="awscdk-appsync-utils.ResolvableFieldOptions.property.runtime"></a>
+
+```typescript
+public readonly runtime: FunctionRuntime;
+```
+
+- *Type:* aws-cdk-lib.aws_appsync.FunctionRuntime
+- *Default:* no function runtime, VTL mapping templates used
+
+The functions runtime.
 
 ---
 

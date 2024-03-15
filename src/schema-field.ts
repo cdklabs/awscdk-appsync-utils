@@ -1,4 +1,12 @@
-import { IAppsyncFunction, BaseDataSource, AuthorizationType, MappingTemplate } from 'aws-cdk-lib/aws-appsync';
+import {
+  IAppsyncFunction,
+  BaseDataSource,
+  AuthorizationType,
+  MappingTemplate,
+  CachingConfig,
+  FunctionRuntime,
+  Code,
+} from 'aws-cdk-lib/aws-appsync';
 import { Type, IField, IIntermediateType, Directive } from './schema-base';
 
 /**
@@ -417,7 +425,7 @@ export interface ResolvableFieldOptions extends FieldOptions {
    * configuration of the pipeline resolver
    *
    * @default - no pipeline resolver configuration
-   * An empty array or undefined prop will set resolver to be of type unit
+   * An empty array | undefined sets resolver to be of kind, unit
    */
   readonly pipelineConfig?: IAppsyncFunction[];
   /**
@@ -432,6 +440,30 @@ export interface ResolvableFieldOptions extends FieldOptions {
    * @default - No mapping template
    */
   readonly responseMappingTemplate?: MappingTemplate;
+  /**
+   * The caching configuration for this resolver
+   *
+   * @default - No caching configuration
+   */
+  readonly cachingConfig?: CachingConfig;
+  /**
+   * The maximum number of elements per batch, when using batch invoke
+   *
+   * @default - No max batch size
+   */
+  readonly maxBatchSize?: number;
+  /**
+   * The functions runtime
+   *
+   * @default - no function runtime, VTL mapping templates used
+   */
+  readonly runtime?: FunctionRuntime;
+  /**
+   * The function code
+   *
+   * @default - no code is used
+   */
+  readonly code?: Code;
 }
 
 /**
