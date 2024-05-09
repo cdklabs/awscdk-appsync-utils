@@ -70,7 +70,7 @@ export class SourceApiAssociationMergeOperationProvider extends Construct implem
     super(scope, id);
 
     this.schemaMergeLambda = new SingletonFunction(this, 'MergeSourceApiSchemaLambda', {
-      runtime: Runtime.NODEJS_LATEST,
+      runtime: Runtime.NODEJS_20_X,
       code: Code.fromAsset(path.join(__dirname, 'mergeSourceApiSchemaHandler')),
       handler: 'index.onEvent',
       timeout: Duration.minutes(2),
@@ -78,7 +78,7 @@ export class SourceApiAssociationMergeOperationProvider extends Construct implem
     });
 
     this.sourceApiStablizationLambda = new SingletonFunction(this, 'PollSourceApiMergeLambda', {
-      runtime: Runtime.NODEJS_LATEST,
+      runtime: Runtime.NODEJS_20_X,
       code: Code.fromAsset(path.join(__dirname, 'mergeSourceApiSchemaHandler')),
       handler: 'index.isComplete',
       timeout: Duration.minutes(2),

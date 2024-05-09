@@ -215,10 +215,7 @@ export class ObjectType extends InterfaceType implements IIntermediateType {
     return api.createResolver(`${this.name}${fieldName}Resolver`, {
       typeName: this.name,
       fieldName: fieldName,
-      dataSource: options?.dataSource,
-      pipelineConfig: options?.pipelineConfig,
-      requestMappingTemplate: options?.requestMappingTemplate,
-      responseMappingTemplate: options?.responseMappingTemplate,
+      ...options,
     });
   }
 }
