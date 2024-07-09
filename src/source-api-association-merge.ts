@@ -4,6 +4,7 @@ import { CfnResource, CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import { ISourceApiAssociation } from 'aws-cdk-lib/aws-appsync';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Code, Runtime, SingletonFunction } from 'aws-cdk-lib/aws-lambda';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs'
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct, IConstruct } from 'constructs';
 
@@ -43,6 +44,11 @@ export interface SourceApiAssociationMergeOperationProviderProps {
      * @default Duration.minutes(15)
      */
   readonly totalTimeout?: Duration;
+
+  /**
+   * The number of days log events are kept in CloudWatch Logs for the schemaMergeLambda and sourceApiStablizationLambda.
+   */
+  readonly logRetention?: RetentionDays;
 }
 
 /**
@@ -75,6 +81,7 @@ export class SourceApiAssociationMergeOperationProvider extends Construct implem
       handler: 'index.onEvent',
       timeout: Duration.minutes(2),
       uuid: '6148f39b-95bb-47e7-8a35-40adb8b93a7b',
+      logRetention: props.logRetention,
     });
 
     this.sourceApiStablizationLambda = new SingletonFunction(this, 'PollSourceApiMergeLambda', {
@@ -83,6 +90,7 @@ export class SourceApiAssociationMergeOperationProvider extends Construct implem
       handler: 'index.isComplete',
       timeout: Duration.minutes(2),
       uuid: '163e01ec-6f29-4bf4-b3b1-11245b00a6bc',
+      logRetention: props.logRetention,
     });
 
     const provider = new Provider(this, 'SchemaMergeOperationProvider', {
