@@ -126,9 +126,10 @@ test('source api association merge operation with logRetention and pollingInterv
     },
   });
 
-  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 6); // +1 for log retention cleanup
+  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 5);
   Template.fromStack(stack).resourceCountIs('Custom::AppSyncSourceApiMergeOperation', 1);
-  Template.fromStack(stack).resourceCountIs('Custom::LogRetention', 2);
+  // no custom log retention resource
+  Template.fromStack(stack).resourceCountIs('Custom::LogRetention', 0);
 });
 
 test('source api association merge operations with version identifier', () => {
