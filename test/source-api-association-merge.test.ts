@@ -2,6 +2,7 @@ import * as path from 'path';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as iam from 'aws-cdk-lib/aws-iam';
+import * as logs from 'aws-cdk-lib/aws-logs';
 import * as cdk from 'aws-cdk-lib/core';
 import { SourceApiAssociationMergeOperation } from '../src';
 
@@ -112,6 +113,22 @@ test('source api association merge operation with always update', () => {
 
   Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 5);
   Template.fromStack(stack).resourceCountIs('Custom::AppSyncSourceApiMergeOperation', 1);
+  Template.fromStack(stack).resourceCountIs('Custom::LogRetention', 0);
+});
+
+test('source api association merge operation with logRetention and pollingInterval set', () => {
+  new SourceApiAssociationMergeOperation(stack, 'SourceApi1Merge', {
+    sourceApiAssociation: sourceApiAssociation1,
+    alwaysMergeOnStackUpdate: true,
+    defaultMergeOperationProviderProps: {
+      logRetention: logs.RetentionDays.ONE_DAY,
+      pollingInterval: cdk.Duration.minutes(1),
+    },
+  });
+
+  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 6); // +1 for log retention cleanup
+  Template.fromStack(stack).resourceCountIs('Custom::AppSyncSourceApiMergeOperation', 1);
+  Template.fromStack(stack).resourceCountIs('Custom::LogRetention', 2);
 });
 
 test('source api association merge operations with version identifier', () => {
