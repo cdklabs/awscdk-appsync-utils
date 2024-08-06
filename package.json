@@ -39,7 +39,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-appsync": "^3.623.0",
+    "@aws-sdk/client-appsync": "^3.624.0",
     "@types/aws-lambda": "^8.10.142",
     "@types/jest": "^27",
     "@types/node": "^16 <= 16.18.78",
