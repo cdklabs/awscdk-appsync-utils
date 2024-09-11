@@ -1244,14 +1244,14 @@ Add the @aws_api_key directive.
 ```typescript
 import { Directive } from 'awscdk-appsync-utils'
 
-Directive.cognito(groups: string)
+Directive.cognito(groups: ...string[])
 ```
 
 Add the @aws_auth or @aws_cognito_user_pools directive.
 
 ###### `groups`<sup>Required</sup> <a name="groups" id="awscdk-appsync-utils.Directive.cognito.parameter.groups"></a>
 
-- *Type:* string
+- *Type:* ...string[]
 
 the groups to allow access to.
 
@@ -1300,7 +1300,7 @@ Add the @aws_oidc directive.
 ```typescript
 import { Directive } from 'awscdk-appsync-utils'
 
-Directive.subscribe(mutations: string)
+Directive.subscribe(mutations: ...string[])
 ```
 
 Add the @aws_subscribe directive.
@@ -1309,7 +1309,7 @@ Only use for top level Subscription type.
 
 ###### `mutations`<sup>Required</sup> <a name="mutations" id="awscdk-appsync-utils.Directive.subscribe.parameter.mutations"></a>
 
-- *Type:* string
+- *Type:* ...string[]
 
 the mutation fields to link to.
 
