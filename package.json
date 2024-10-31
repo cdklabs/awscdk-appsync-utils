@@ -39,7 +39,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-appsync": "^3.682.0",
+    "@aws-sdk/client-appsync": "^3.683.0",
     "@types/aws-lambda": "^8.10.145",
     "@types/jest": "^27",
     "@types/node": "^16 <= 16.18.78",
@@ -58,7 +58,7 @@
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.104.0",
     "jsii-rosetta": "1.x",
-    "projen": "^0.88.9",
+    "projen": "^0.89.0",
     "ts-jest": "^27",
     "ts-node": "^10.9.2",
     "typescript": "^4.9.5"
