@@ -1032,7 +1032,7 @@ public addMutation(fieldName: string, field: ResolvableField): ObjectType
 Add a mutation field to the schema's Mutation. CDK will create an Object Type called 'Mutation'. For example,.
 
 type Mutation {
-   fieldName: Field.returnType
+  fieldName: Field.returnType
 }
 
 ###### `fieldName`<sup>Required</sup> <a name="fieldName" id="awscdk-appsync-utils.CodeFirstSchema.addMutation.parameter.fieldName"></a>
@@ -1060,7 +1060,7 @@ public addQuery(fieldName: string, field: ResolvableField): ObjectType
 Add a query field to the schema's Query. CDK will create an Object Type called 'Query'. For example,.
 
 type Query {
-   fieldName: Field.returnType
+  fieldName: Field.returnType
 }
 
 ###### `fieldName`<sup>Required</sup> <a name="fieldName" id="awscdk-appsync-utils.CodeFirstSchema.addQuery.parameter.fieldName"></a>
@@ -1088,7 +1088,7 @@ public addSubscription(fieldName: string, field: Field): ObjectType
 Add a subscription field to the schema's Subscription. CDK will create an Object Type called 'Subscription'. For example,.
 
 type Subscription {
-   fieldName: Field.returnType
+  fieldName: Field.returnType
 }
 
 ###### `fieldName`<sup>Required</sup> <a name="fieldName" id="awscdk-appsync-utils.CodeFirstSchema.addSubscription.parameter.fieldName"></a>
@@ -1198,7 +1198,7 @@ The definition for this schema.
 
 Directives for types.
 
-i.e. @aws_iam or @aws_subscribe
+i.e.
 
 #### Methods <a name="Methods" id="Methods"></a>
 
@@ -1220,12 +1220,12 @@ Generate the directive statement.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#awscdk-appsync-utils.Directive.apiKey">apiKey</a></code> | Add the @aws_api_key directive. |
-| <code><a href="#awscdk-appsync-utils.Directive.cognito">cognito</a></code> | Add the @aws_auth or @aws_cognito_user_pools directive. |
+| <code><a href="#awscdk-appsync-utils.Directive.apiKey">apiKey</a></code> | Add the. |
+| <code><a href="#awscdk-appsync-utils.Directive.cognito">cognito</a></code> | Add the. |
 | <code><a href="#awscdk-appsync-utils.Directive.custom">custom</a></code> | Add a custom directive. |
-| <code><a href="#awscdk-appsync-utils.Directive.iam">iam</a></code> | Add the @aws_iam directive. |
-| <code><a href="#awscdk-appsync-utils.Directive.oidc">oidc</a></code> | Add the @aws_oidc directive. |
-| <code><a href="#awscdk-appsync-utils.Directive.subscribe">subscribe</a></code> | Add the @aws_subscribe directive. |
+| <code><a href="#awscdk-appsync-utils.Directive.iam">iam</a></code> | Add the. |
+| <code><a href="#awscdk-appsync-utils.Directive.oidc">oidc</a></code> | Add the. |
+| <code><a href="#awscdk-appsync-utils.Directive.subscribe">subscribe</a></code> | Add the. |
 
 ---
 
@@ -1237,7 +1237,7 @@ import { Directive } from 'awscdk-appsync-utils'
 Directive.apiKey()
 ```
 
-Add the @aws_api_key directive.
+Add the.
 
 ##### `cognito` <a name="cognito" id="awscdk-appsync-utils.Directive.cognito"></a>
 
@@ -1247,7 +1247,7 @@ import { Directive } from 'awscdk-appsync-utils'
 Directive.cognito(groups: ...string[])
 ```
 
-Add the @aws_auth or @aws_cognito_user_pools directive.
+Add the.
 
 ###### `groups`<sup>Required</sup> <a name="groups" id="awscdk-appsync-utils.Directive.cognito.parameter.groups"></a>
 
@@ -1283,7 +1283,7 @@ import { Directive } from 'awscdk-appsync-utils'
 Directive.iam()
 ```
 
-Add the @aws_iam directive.
+Add the.
 
 ##### `oidc` <a name="oidc" id="awscdk-appsync-utils.Directive.oidc"></a>
 
@@ -1293,7 +1293,7 @@ import { Directive } from 'awscdk-appsync-utils'
 Directive.oidc()
 ```
 
-Add the @aws_oidc directive.
+Add the.
 
 ##### `subscribe` <a name="subscribe" id="awscdk-appsync-utils.Directive.subscribe"></a>
 
@@ -1303,9 +1303,7 @@ import { Directive } from 'awscdk-appsync-utils'
 Directive.subscribe(mutations: ...string[])
 ```
 
-Add the @aws_subscribe directive.
-
-Only use for top level Subscription type.
+Add the.
 
 ###### `mutations`<sup>Required</sup> <a name="mutations" id="awscdk-appsync-utils.Directive.subscribe.parameter.mutations"></a>
 
@@ -1367,7 +1365,7 @@ new EnumType(name: string, options: EnumTypeOptions)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.EnumType.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.EnumType.Initializer.parameter.name">name</a></code> | <code>string</code> | the name of this type. |
 | <code><a href="#awscdk-appsync-utils.EnumType.Initializer.parameter.options">options</a></code> | <code><a href="#awscdk-appsync-utils.EnumTypeOptions">EnumTypeOptions</a></code> | *No description.* |
 
 ---
@@ -1375,6 +1373,8 @@ new EnumType(name: string, options: EnumTypeOptions)
 ##### `name`<sup>Required</sup> <a name="name" id="awscdk-appsync-utils.EnumType.Initializer.parameter.name"></a>
 
 - *Type:* string
+
+the name of this type.
 
 ---
 
@@ -1957,7 +1957,7 @@ new GraphqlType(type: Type, options?: GraphqlTypeOptions)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.GraphqlType.Initializer.parameter.type">type</a></code> | <code><a href="#awscdk-appsync-utils.Type">Type</a></code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.GraphqlType.Initializer.parameter.type">type</a></code> | <code><a href="#awscdk-appsync-utils.Type">Type</a></code> | the type of attribute. |
 | <code><a href="#awscdk-appsync-utils.GraphqlType.Initializer.parameter.options">options</a></code> | <code><a href="#awscdk-appsync-utils.GraphqlTypeOptions">GraphqlTypeOptions</a></code> | *No description.* |
 
 ---
@@ -1965,6 +1965,8 @@ new GraphqlType(type: Type, options?: GraphqlTypeOptions)
 ##### `type`<sup>Required</sup> <a name="type" id="awscdk-appsync-utils.GraphqlType.Initializer.parameter.type"></a>
 
 - *Type:* <a href="#awscdk-appsync-utils.Type">Type</a>
+
+the type of attribute.
 
 ---
 
@@ -2415,7 +2417,7 @@ new InputType(name: string, props: IntermediateTypeOptions)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.InputType.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.InputType.Initializer.parameter.name">name</a></code> | <code>string</code> | the name of this type. |
 | <code><a href="#awscdk-appsync-utils.InputType.Initializer.parameter.props">props</a></code> | <code><a href="#awscdk-appsync-utils.IntermediateTypeOptions">IntermediateTypeOptions</a></code> | *No description.* |
 
 ---
@@ -2423,6 +2425,8 @@ new InputType(name: string, props: IntermediateTypeOptions)
 ##### `name`<sup>Required</sup> <a name="name" id="awscdk-appsync-utils.InputType.Initializer.parameter.name"></a>
 
 - *Type:* string
+
+the name of this type.
 
 ---
 
@@ -2535,7 +2539,7 @@ new InterfaceType(name: string, props: IntermediateTypeOptions)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.InterfaceType.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.InterfaceType.Initializer.parameter.name">name</a></code> | <code>string</code> | the name of this type. |
 | <code><a href="#awscdk-appsync-utils.InterfaceType.Initializer.parameter.props">props</a></code> | <code><a href="#awscdk-appsync-utils.IntermediateTypeOptions">IntermediateTypeOptions</a></code> | *No description.* |
 
 ---
@@ -2543,6 +2547,8 @@ new InterfaceType(name: string, props: IntermediateTypeOptions)
 ##### `name`<sup>Required</sup> <a name="name" id="awscdk-appsync-utils.InterfaceType.Initializer.parameter.name"></a>
 
 - *Type:* string
+
+the name of this type.
 
 ---
 
@@ -2669,7 +2675,7 @@ new ObjectType(name: string, props: ObjectTypeOptions)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.ObjectType.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.ObjectType.Initializer.parameter.name">name</a></code> | <code>string</code> | the name of this type. |
 | <code><a href="#awscdk-appsync-utils.ObjectType.Initializer.parameter.props">props</a></code> | <code><a href="#awscdk-appsync-utils.ObjectTypeOptions">ObjectTypeOptions</a></code> | *No description.* |
 
 ---
@@ -2677,6 +2683,8 @@ new ObjectType(name: string, props: ObjectTypeOptions)
 ##### `name`<sup>Required</sup> <a name="name" id="awscdk-appsync-utils.ObjectType.Initializer.parameter.name"></a>
 
 - *Type:* string
+
+the name of this type.
 
 ---
 
@@ -3296,7 +3304,7 @@ new UnionType(name: string, options: UnionTypeOptions)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#awscdk-appsync-utils.UnionType.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#awscdk-appsync-utils.UnionType.Initializer.parameter.name">name</a></code> | <code>string</code> | the name of this type. |
 | <code><a href="#awscdk-appsync-utils.UnionType.Initializer.parameter.options">options</a></code> | <code><a href="#awscdk-appsync-utils.UnionTypeOptions">UnionTypeOptions</a></code> | *No description.* |
 
 ---
@@ -3304,6 +3312,8 @@ new UnionType(name: string, options: UnionTypeOptions)
 ##### `name`<sup>Required</sup> <a name="name" id="awscdk-appsync-utils.UnionType.Initializer.parameter.name"></a>
 
 - *Type:* string
+
+the name of this type.
 
 ---
 
