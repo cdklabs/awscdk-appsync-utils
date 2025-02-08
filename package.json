@@ -39,7 +39,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-appsync": "^3.743.0",
+    "@aws-sdk/client-appsync": "^3.744.0",
     "@stylistic/eslint-plugin": "^2",
     "@types/aws-lambda": "^8.10.147",
     "@types/jest": "^27",
