@@ -39,7 +39,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-appsync": "^3.749.0",
+    "@aws-sdk/client-appsync": "^3.750.0",
     "@stylistic/eslint-plugin": "^2",
     "@types/aws-lambda": "^8.10.147",
     "@types/jest": "^27",
@@ -50,7 +50,7 @@
     "commit-and-tag-version": "^12",
     "constructs": "10.0.5",
     "eslint": "^9",
-    "eslint-import-resolver-typescript": "^3.8.0",
+    "eslint-import-resolver-typescript": "^3.8.1",
     "eslint-plugin-import": "^2.31.0",
     "jest": "^27",
     "jest-junit": "^16",
