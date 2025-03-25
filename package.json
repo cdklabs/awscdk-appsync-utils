@@ -39,9 +39,9 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-appsync": "^3.772.0",
+    "@aws-sdk/client-appsync": "^3.774.0",
     "@stylistic/eslint-plugin": "^2",
-    "@types/aws-lambda": "^8.10.147",
+    "@types/aws-lambda": "^8.10.148",
     "@types/jest": "^27",
     "@types/node": "^16 <= 16.18.78",
     "@typescript-eslint/eslint-plugin": "^8",
