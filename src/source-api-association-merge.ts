@@ -174,7 +174,7 @@ type MergeResourceProperties = {
      * merge operation after each deployment following a synthesis of the stack.
      */
   alwaysUpdate?: string;
-}
+};
 
 /**
  * The SourceApiAssociationMergeOperation triggers a merge of a source API during a Cloudformation stack update.
