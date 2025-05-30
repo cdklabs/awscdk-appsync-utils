@@ -19,7 +19,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     javaPackage: 'io.github.cdklabs.awscdk.appsync.utils',
     mavenGroupId: 'io.github.cdklabs',
     mavenArtifactId: 'awscdk-appsync-utils',
-    mavenEndpoint: 'https://s01.oss.sonatype.org',
+    mavenServerId: 'central-ossrh',
   },
   publishToNuget: {
     dotNetNamespace: 'Cdklabs.AwsCdkAppsyncUtils',
