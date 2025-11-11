@@ -39,7 +39,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-appsync": "^3.927.0",
+    "@aws-sdk/client-appsync": "^3.928.0",
     "@stylistic/eslint-plugin": "^2",
     "@types/aws-lambda": "^8.10.157",
     "@types/jest": "^27",
@@ -55,9 +55,9 @@
     "jest": "^27",
     "jest-junit": "^16",
     "jsii": "~5.8.0",
-    "jsii-diff": "^1.118.0",
+    "jsii-diff": "^1.119.0",
     "jsii-docgen": "^10.5.0",
-    "jsii-pacmak": "^1.118.0",
+    "jsii-pacmak": "^1.119.0",
     "jsii-rosetta": "~5.8.0",
     "projen": "^0.98.10",
     "ts-jest": "^27",
