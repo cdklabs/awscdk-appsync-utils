@@ -1,8 +1,9 @@
 import { randomUUID } from 'crypto';
 import * as path from 'path';
-import { CfnResource, CustomResource, Duration, Stack } from 'aws-cdk-lib';
+import { CfnResource, CustomResource, Duration, Stack, RemovalPolicy } from 'aws-cdk-lib';
 import { ISourceApiAssociation } from 'aws-cdk-lib/aws-appsync';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Code, Runtime, SingletonFunction } from 'aws-cdk-lib/aws-lambda';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct, IConstruct } from 'constructs';
@@ -43,6 +44,13 @@ export interface SourceApiAssociationMergeOperationProviderProps {
      * @default Duration.minutes(15)
      */
   readonly totalTimeout?: Duration;
+
+  /**
+   * The number of days log events are kept in CloudWatch Logs for the schemaMergeLambda and sourceApiStablizationLambda.
+   *
+   * @default RetentionDays.INFINITE
+   */
+  readonly logRetention?: RetentionDays;
 }
 
 /**
@@ -69,20 +77,39 @@ export class SourceApiAssociationMergeOperationProvider extends Construct implem
   constructor(scope: Construct, id: string, props: SourceApiAssociationMergeOperationProviderProps) {
     super(scope, id);
 
+    const schemaMergeLambdaName = `${id}-SchemaMergeOperation`;
+
+    const schemaMergeLambdaLogGroup = new LogGroup(scope, 'MergeSourceApiSchemaLambdaLogGroup', {
+      logGroupName: `/aws/lambda/${schemaMergeLambdaName}`,
+      retention: props.logRetention,
+      removalPolicy: RemovalPolicy.DESTROY,
+    });
+
     this.schemaMergeLambda = new SingletonFunction(this, 'MergeSourceApiSchemaLambda', {
       runtime: Runtime.NODEJS_20_X,
+      functionName: schemaMergeLambdaName,
       code: Code.fromAsset(path.join(__dirname, 'mergeSourceApiSchemaHandler')),
       handler: 'index.onEvent',
       timeout: Duration.minutes(2),
       uuid: '6148f39b-95bb-47e7-8a35-40adb8b93a7b',
+      logGroup: schemaMergeLambdaLogGroup,
     });
 
+    const sourceApiStablizationLambdaName = `${id}-ApiStabilization`;
+
+    const sourceApiStablizationLambdaLogGroup = new LogGroup(scope, 'PollSourceApiMergeLambdaLogGroup', {
+      logGroupName: `/aws/lambda/${sourceApiStablizationLambdaName}`,
+      retention: props.logRetention,
+      removalPolicy: RemovalPolicy.DESTROY,
+    });
     this.sourceApiStablizationLambda = new SingletonFunction(this, 'PollSourceApiMergeLambda', {
       runtime: Runtime.NODEJS_20_X,
+      functionName: sourceApiStablizationLambdaName,
       code: Code.fromAsset(path.join(__dirname, 'mergeSourceApiSchemaHandler')),
       handler: 'index.isComplete',
       timeout: Duration.minutes(2),
       uuid: '163e01ec-6f29-4bf4-b3b1-11245b00a6bc',
+      logGroup: sourceApiStablizationLambdaLogGroup,
     });
 
     const provider = new Provider(this, 'SchemaMergeOperationProvider', {
@@ -126,6 +153,13 @@ export interface SourceApiAssociationMergeOperationProps {
      * Cloudformation update.
      */
   readonly mergeOperationProvider?: ISourceApiAssociationMergeOperationProvider;
+
+  /**
+   * The default merge operation provider props to use when it is charge of creating a new merge operation provider.
+   *
+   * @default { pollingInterval: Duration.seconds(30) }
+   */
+  readonly defaultMergeOperationProviderProps?: SourceApiAssociationMergeOperationProviderProps;
 
   /**
      * The version identifier for the schema merge operation. Any change to the version identifier will trigger a merge on the next
@@ -192,7 +226,7 @@ export class SourceApiAssociationMergeOperation extends Construct {
 
     var mergeOperationProvider = props.mergeOperationProvider;
     if (!mergeOperationProvider) {
-      mergeOperationProvider = this.getOrCreateMergeOperationProvider();
+      mergeOperationProvider = this.getOrCreateMergeOperationProvider(props.defaultMergeOperationProviderProps ?? {});
     }
 
     mergeOperationProvider.associateSourceApiAssociation(props.sourceApiAssociation);
@@ -241,13 +275,14 @@ export class SourceApiAssociationMergeOperation extends Construct {
    * Get an existing merge operation provider from the current stack or create a new stack scoped merge operation provider.
    * @returns SourceApiAssociationMergeOperationProvider
    */
-  private getOrCreateMergeOperationProvider(): SourceApiAssociationMergeOperationProvider {
+  private getOrCreateMergeOperationProvider(props: SourceApiAssociationMergeOperationProviderProps): SourceApiAssociationMergeOperationProvider {
     const constructName = 'SchemaMergeOperationProvider';
     const stack = Stack.of(this);
     const existing = stack.node.tryFindChild(constructName);
     if (!existing) {
       return new SourceApiAssociationMergeOperationProvider(stack, 'SchemaMergeOperationProvider', {
         pollingInterval: Duration.seconds(30),
+        ...props,
       });
     } else {
       return existing as SourceApiAssociationMergeOperationProvider;
