@@ -81,6 +81,43 @@ describe('basic testing schema definition mode `code`', () => {
     });
   });
 
+  test('definition mode `code` allows for api to addQuery with empty args', () => {
+    // WHEN
+    const schema = new CodeFirstSchema();
+    new appsync.GraphqlApi(stack, 'API', {
+      name: 'demo',
+      schema,
+    });
+    schema.addQuery('test', new ResolvableField({
+      returnType: t.string,
+      args: {},
+    }));
+
+    // THEN
+    Template.fromStack(stack).hasResourceProperties('AWS::AppSync::GraphQLSchema', {
+      Definition: 'schema {\n  query: Query\n}\ntype Query {\n  test: String\n}\n',
+    });
+  });
+
+  test('definition mode `code` allows for api to addQuery with args', () => {
+    // WHEN
+    const schema = new CodeFirstSchema();
+    new appsync.GraphqlApi(stack, 'API', {
+      name: 'demo',
+      schema,
+    });
+    schema.addQuery('test', new ResolvableField({
+      returnType: t.string,
+      args: { id: t.string },
+    }));
+
+    // THEN
+    Template.fromStack(stack).hasResourceProperties('AWS::AppSync::GraphQLSchema', {
+      Definition: 'schema {\n  query: Query\n}\ntype Query {\n  test(id: String): String\n}\n',
+    });
+  });
+
+
   test('definition mode `code` allows for schema to addMutation', () => {
     // WHEN
     const schema = new CodeFirstSchema();
