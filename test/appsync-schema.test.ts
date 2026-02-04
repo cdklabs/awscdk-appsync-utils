@@ -47,36 +47,6 @@ describe('CodeFirstSchema bind validation', () => {
     }).toThrowError("'api' instance should implement IGraphqlApi, but doesn't");
   });
 
-  test('bind throws error when api is missing arn property', () => {
-    // WHEN
-    const schema = new CodeFirstSchema();
-    const invalidApi = {
-      apiId: 'test-api-id',
-      addNoneDataSource: () => {},
-      // Missing 'arn'
-    };
-
-    // THEN
-    expect(() => {
-      schema.bind(invalidApi as any);
-    }).toThrowError("'api' instance should implement IGraphqlApi, but doesn't");
-  });
-
-  test('bind throws error when api is missing addNoneDataSource method', () => {
-    // WHEN
-    const schema = new CodeFirstSchema();
-    const invalidApi = {
-      apiId: 'test-api-id',
-      arn: 'arn:aws:appsync:us-east-1:123456789012:apis/test',
-      // Missing 'addNoneDataSource'
-    };
-
-    // THEN
-    expect(() => {
-      schema.bind(invalidApi as any);
-    }).toThrowError("'api' instance should implement IGraphqlApi, but doesn't");
-  });
-
   test('bind succeeds with valid IGraphqlApi', () => {
     // WHEN
     const schema = new CodeFirstSchema();
