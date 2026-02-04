@@ -1,10 +1,9 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { DependencyType } from 'projen';
 
 const project = new CdklabsConstructLibrary({
   author: 'Mitchell Valine',
   authorAddress: 'mitchellvaline@yahoo.com',
-  cdkVersion: '2.110.0',
+  cdkVersion: '2.237.1',
   defaultReleaseBranch: 'main',
   name: 'awscdk-appsync-utils',
   projenrcTs: true,
@@ -48,11 +47,6 @@ const eslintTask = project.tasks.tryFind('eslint');
 if (eslintTask) {
   project.testTask.spawn(eslintTask);
 }
-// Override peer dependencies to use exact versions for jsii Maven resolution
-project.deps.removeDependency('aws-cdk-lib', DependencyType.PEER);
-project.deps.removeDependency('constructs', DependencyType.PEER);
-project.deps.addDependency('aws-cdk-lib@2.110.0', DependencyType.PEER);
-project.deps.addDependency('constructs@10.0.5', DependencyType.PEER);
 
 project.addDevDeps('@aws-sdk/client-appsync');
 project.addDevDeps('@types/aws-lambda');
