@@ -1181,14 +1181,14 @@ the intermediate type to add to the schema.
 ##### `bind` <a name="bind" id="awscdk-appsync-utils.CodeFirstSchema.bind"></a>
 
 ```typescript
-public bind(api: IGraphqlApi, _options?: SchemaBindOptions): ISchemaConfig
+public bind(api: IGraphQLApiRef, _options?: SchemaBindOptions): ISchemaConfig
 ```
 
 Called when the GraphQL Api is initialized to allow this object to bind to the stack.
 
 ###### `api`<sup>Required</sup> <a name="api" id="awscdk-appsync-utils.CodeFirstSchema.bind.parameter.api"></a>
 
-- *Type:* aws-cdk-lib.aws_appsync.IGraphqlApi
+- *Type:* aws-cdk-lib.interfaces.aws_appsync.IGraphQLApiRef
 
 The binding GraphQL Api.
 

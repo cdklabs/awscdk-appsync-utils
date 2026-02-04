@@ -32,6 +32,36 @@ beforeEach(() => {
   stack = new cdk.Stack();
 });
 
+describe('CodeFirstSchema bind validation', () => {
+  test('bind throws error when api does not implement IGraphqlApi', () => {
+    // WHEN
+    const schema = new CodeFirstSchema();
+    const invalidApi = {
+      apiId: 'test-api-id',
+      // Missing 'arn' and 'addNoneDataSource' - not a valid IGraphqlApi
+    };
+
+    // THEN
+    expect(() => {
+      schema.bind(invalidApi as any);
+    }).toThrowError("'api' instance should implement IGraphqlApi, but doesn't");
+  });
+
+  test('bind succeeds with valid IGraphqlApi', () => {
+    // WHEN
+    const schema = new CodeFirstSchema();
+    new appsync.GraphqlApi(stack, 'API', {
+      name: 'demo',
+      schema,
+    });
+
+    // THEN - no error thrown, schema binds successfully
+    Template.fromStack(stack).hasResourceProperties('AWS::AppSync::GraphQLSchema', {
+      Definition: '',
+    });
+  });
+});
+
 describe('basic testing schema definition mode `code`', () => {
 
   test('definition mode `code` produces empty schema definition', () => {

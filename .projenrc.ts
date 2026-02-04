@@ -1,9 +1,9 @@
-import { awscdk } from 'projen';
+import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
 
-const project = new awscdk.AwsCdkConstructLibrary({
+const project = new CdklabsConstructLibrary({
   author: 'Mitchell Valine',
   authorAddress: 'mitchellvaline@yahoo.com',
-  cdkVersion: '2.110.0',
+  cdkVersion: '2.237.1',
   defaultReleaseBranch: 'main',
   name: 'awscdk-appsync-utils',
   projenrcTs: true,
@@ -15,6 +15,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
+  private: false,
+  stability: 'stable',
   publishToMaven: {
     javaPackage: 'io.github.cdklabs.awscdk.appsync.utils',
     mavenGroupId: 'io.github.cdklabs',
@@ -32,7 +34,19 @@ const project = new awscdk.AwsCdkConstructLibrary({
   publishToGo: {
     moduleName: 'github.com/cdklabs/awscdk-appsync-utils-go',
   },
+  enablePRAutoMerge: true,
+  setNodeEngineVersion: false,
+  rosettaOptions: {
+    strict: false,
+  },
 });
+
+project.testTask.reset();
+project.testTask.exec('jest --passWithNoTests --updateSnapshot');
+const eslintTask = project.tasks.tryFind('eslint');
+if (eslintTask) {
+  project.testTask.spawn(eslintTask);
+}
 
 project.addDevDeps('@aws-sdk/client-appsync');
 project.addDevDeps('@types/aws-lambda');
