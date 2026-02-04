@@ -15,6 +15,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
+  npmTrustedPublishing: true,
   publishToMaven: {
     javaPackage: 'io.github.cdklabs.awscdk.appsync.utils',
     mavenGroupId: 'io.github.cdklabs',
@@ -24,10 +25,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   publishToNuget: {
     dotNetNamespace: 'Cdklabs.AwsCdkAppsyncUtils',
     packageId: 'Cdklabs.AwsCdkAppsyncUtils',
+    trustedPublishing: true,
   },
   publishToPypi: {
     distName: 'cdklabs.appsync-utils',
     module: 'awscdk.appsync_utils',
+    trustedPublishing: true,
   },
   publishToGo: {
     moduleName: 'github.com/cdklabs/awscdk-appsync-utils-go',
