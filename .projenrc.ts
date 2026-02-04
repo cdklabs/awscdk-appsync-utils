@@ -1,4 +1,4 @@
-import { awscdk } from 'projen';
+import { awscdk, DependencyType } from 'projen';
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Mitchell Valine',
@@ -39,4 +39,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
 project.addDevDeps('@aws-sdk/client-appsync');
 project.addDevDeps('@types/aws-lambda');
+
+// Override peer dependencies to use exact versions for jsii Maven resolution
+project.deps.removeDependency('aws-cdk-lib', DependencyType.PEER);
+project.deps.removeDependency('constructs', DependencyType.PEER);
+project.deps.addDependency('aws-cdk-lib@2.110.0', DependencyType.PEER);
+project.deps.addDependency('constructs@10.0.5', DependencyType.PEER);
+
 project.synth();
