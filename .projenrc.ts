@@ -35,7 +35,7 @@ const project = new CdklabsConstructLibrary({
   publishToGo: {
     moduleName: 'github.com/cdklabs/awscdk-appsync-utils-go',
   },
-
+  enablePRAutoMerge: true,
   setNodeEngineVersion: false,
   rosettaOptions: {
     strict: false,
