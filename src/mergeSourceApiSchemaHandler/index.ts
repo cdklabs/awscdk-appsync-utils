@@ -19,7 +19,7 @@ type SchemaMergeResult = {
 type IsCompleteResult = {
   IsComplete: boolean;
   Data?: Object;
-}
+};
 
 export async function onEvent(event: AWSLambda.CloudFormationCustomResourceEvent): Promise<SchemaMergeResult> {
   const params = {

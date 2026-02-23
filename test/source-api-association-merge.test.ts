@@ -62,7 +62,7 @@ test('source api association merge operation with version identifier', () => {
     versionIdentifier: '1',
   });
 
-  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 5);
+  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 6);
   Template.fromStack(stack).resourceCountIs('Custom::AppSyncSourceApiMergeOperation', 1);
 
   Template.fromStack(stack).hasResourceProperties('AWS::Lambda::Function', {
@@ -110,7 +110,7 @@ test('source api association merge operation with always update', () => {
     alwaysMergeOnStackUpdate: true,
   });
 
-  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 5);
+  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 6);
   Template.fromStack(stack).resourceCountIs('Custom::AppSyncSourceApiMergeOperation', 1);
 });
 
@@ -125,7 +125,7 @@ test('source api association merge operations with version identifier', () => {
     versionIdentifier: '1',
   });
 
-  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 5);
+  Template.fromStack(stack).resourceCountIs('AWS::Lambda::Function', 6);
   Template.fromStack(stack).resourceCountIs('Custom::AppSyncSourceApiMergeOperation', 2);
 
   Template.fromStack(stack).hasResourceProperties('AWS::Lambda::Function', {

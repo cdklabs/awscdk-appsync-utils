@@ -1,5 +1,5 @@
 import { Lazy } from 'aws-cdk-lib';
-import { SchemaBindOptions, ISchema, ISchemaConfig, IGraphqlApi } from 'aws-cdk-lib/aws-appsync';
+import { SchemaBindOptions, ISchema, ISchemaConfig, IGraphQLApiRef, IGraphqlApi } from 'aws-cdk-lib/aws-appsync';
 import { shapeAddition } from './private';
 import { IIntermediateType } from './schema-base';
 import { Field, ResolvableField } from './schema-field';
@@ -34,7 +34,10 @@ export class CodeFirstSchema implements ISchema {
    *
    * @param api The binding GraphQL Api
    */
-  public bind(api: IGraphqlApi, _options?: SchemaBindOptions): ISchemaConfig {
+  public bind(api: IGraphQLApiRef, _options?: SchemaBindOptions): ISchemaConfig {
+    if (!this.isGraphQlApi(api)) {
+      throw new Error(`'api' instance should implement IGraphqlApi, but doesn't: ${api.constructor?.name ?? 'unknown'}`);
+    }
     return {
       apiId: api.apiId,
       definition: Lazy.string({
@@ -154,5 +157,10 @@ export class CodeFirstSchema implements ISchema {
       fields: list.map((key: root) => this[key] ? `${key}: ${this[key]?.name}` : '')
         .filter((field) => field != ''),
     }) + '\n';
+  }
+
+  private isGraphQlApi(apiRef: IGraphQLApiRef): apiRef is IGraphqlApi {
+    const api = apiRef as any;
+    return ('apiId' in api && 'arn' in api && 'addNoneDataSource' in api);
   }
 }
