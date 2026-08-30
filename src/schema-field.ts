@@ -393,8 +393,9 @@ export class Field extends GraphqlType implements IField {
    */
   public argsToString(): string {
     if (!this.fieldOptions || !this.fieldOptions.args) { return ''; }
-    return Object.keys(this.fieldOptions.args).reduce((acc, key) =>
-      `${acc}${key}: ${this.fieldOptions?.args?.[key].toString()} `, '(').slice(0, -1) + ')';
+    const argString = Object.keys(this.fieldOptions.args).reduce((acc, key) =>
+      `${acc}${key}: ${this.fieldOptions?.args?.[key].toString()} `, '(').slice(0, -1);
+    return argString === '' ? argString : argString + ')';
   }
 
   /**
