@@ -4,6 +4,8 @@
 
 ### SourceApiAssociationMergeOperation <a name="SourceApiAssociationMergeOperation" id="awscdk-appsync-utils.SourceApiAssociationMergeOperation"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 The SourceApiAssociationMergeOperation triggers a merge of a source API during a Cloudformation stack update.
 
 This can be used to propagate changes from the source API to the Merged API when the association is using type MANUAL_MERGE.
@@ -122,7 +124,7 @@ The tree node.
 
 ### SourceApiAssociationMergeOperationProvider <a name="SourceApiAssociationMergeOperationProvider" id="awscdk-appsync-utils.SourceApiAssociationMergeOperationProvider"></a>
 
-- *Implements:* <a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a>
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#awscdk-appsync-utils.ISourceApiAssociationMergeOperationProvider">ISourceApiAssociationMergeOperationProvider</a>
 
 SourceApiAssociationMergeProvider class is responsible for constructing the custom resource that will be used for initiating the source API merge during a Cloudformation update.
 
